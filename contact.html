@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | Grace Davidson Studio | London Interior Designer</title>
+  <meta name="description" content="Get in touch with Grace Davidson Studio. We would love to hear about your project." />
+  <link rel="canonical" href="https://www.gracedavidsonstudio.com/contact" />
+  <meta property="og:title" content="Contact | Grace Davidson Studio" />
+  <meta property="og:type" content="website" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --burgundy: #43121F;
+      --cream: #FFFAF3;
+      --footer-bg: #F3EADC;
+      --text: #121212;
+      --text-light: #5a5a5a;
+      --white: #ffffff;
+      --font: "Poppins", sans-serif;
+      --transition: 0.3s ease;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+    body { font-family: var(--font); background-color: var(--cream); color: var(--text); font-size: 15px; line-height: 1.7; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; }
+    img { display: block; max-width: 100%; }
+
+    /* HEADER */
+    header { background-color: var(--burgundy); display: flex; flex-direction: row; align-items: center; justify-content: space-between; padding: 0 60px; height: 90px; }
+    .header-logo img { width: 160px; height: auto; display: block; }
+    nav ul { list-style: none; display: flex; justify-content: flex-end; gap: 48px; }
+    nav ul li a { display: block; font-size: 14px; font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(237,232,223,0.9); position: relative; transition: color var(--transition); }
+    nav ul li a::after { content: ""; position: absolute; bottom: -2px; left: 0; width: 0; height: 1px; background-color: rgba(237,232,223,0.6); transition: width var(--transition); }
+    nav ul li a:hover { color: #ede8df; }
+    nav ul li a:hover::after { width: 100%; }
+    nav ul li a.active { color: #ede8df; }
+
+    /* HAMBURGER */
+    .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 8px; z-index: 1001; }
+    .hamburger span { display: block; width: 24px; height: 1.5px; background-color: #ede8df; transition: all 0.3s ease; transform-origin: center; }
+    .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    /* MOBILE MENU */
+    .mobile-menu { display: none; position: fixed; top: 0; right: -100%; width: 280px; height: 100vh; background-color: var(--burgundy); z-index: 1000; flex-direction: column; justify-content: flex-start; align-items: flex-start; padding: 100px 40px 40px; transition: right 0.35s ease; box-shadow: -4px 0 20px rgba(0,0,0,0.2); }
+    .mobile-menu.open { right: 0; }
+    .mobile-menu ul { list-style: none; display: flex; flex-direction: column; gap: 32px; }
+    .mobile-menu ul li a { font-size: 18px; font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(237,232,223,0.9); transition: color var(--transition); }
+    .mobile-menu ul li a:hover { color: #ede8df; }
+    .menu-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 999; }
+    .menu-overlay.open { display: block; }
+
+    /* CONTACT SECTION */
+    .contact-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 100px 60px 100px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    /* PLACEHOLDER IMAGE , replace with /images/contact/contact-image.jpg */
+    .contact-image {
+      width: 100%;
+      aspect-ratio: 3/4;
+      overflow: hidden;
+      background: url("https://picsum.photos/seed/contactimg/600/800") center/cover no-repeat;
+    }
+
+    .contact-content { padding-top: 0; overflow: hidden; }
+
+    /* HEADING SVG ANIMATION */
+    .contact-clip-rect {
+      transition: width 1.8s cubic-bezier(0.25, 0, 0.75, 1);
+    }
+
+    .contact-clip-rect.drawn { width: 370.26px; }
+
+    .contact-heading-svg {
+      width: 100%;
+      max-width: 360px;
+      height: auto;
+      display: block;
+      margin-bottom: 20px;
+    }
+
+    .contact-intro {
+      font-size: 12px;
+      font-weight: 300;
+      line-height: 1.95;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+
+    /* FORM */
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-field label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-light);
+    }
+
+    .form-field input,
+    .form-field textarea,
+    .form-field select {
+      font-family: var(--font);
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--text);
+      background-color: transparent;
+      border: 1px solid rgba(0,0,0,0.2);
+      border-radius: 0;
+      padding: 10px 12px;
+      outline: none;
+      transition: border-color var(--transition);
+      width: 100%;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+
+    .form-field input:focus,
+    .form-field textarea:focus,
+    .form-field select:focus {
+      border-color: var(--burgundy);
+    }
+
+    .form-field input::placeholder,
+    .form-field textarea::placeholder {
+      color: rgba(0,0,0,0.25);
+    }
+
+    .form-field textarea {
+      resize: none;
+      min-height: 80px;
+    }
+
+    .form-field select {
+      color: var(--text);
+      cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%235a5a5a'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 4px center;
+      padding-right: 20px;
+    }
+
+    .form-field select option { color: var(--text); }
+
+    .form-submit {
+      margin-top: 8px;
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--white);
+      background-color: var(--burgundy);
+      padding: 12px 28px;
+      border: 1px solid var(--burgundy);
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color var(--transition), color var(--transition);
+      align-self: flex-start;
+    }
+
+    .form-field input:invalid:not(:placeholder-shown),
+    .form-field textarea:invalid:not(:placeholder-shown),
+    .form-field select:invalid {
+      border-color: rgba(67,18,31,0.4);
+    }
+
+    .field-error {
+      font-size: 10px;
+      font-weight: 400;
+      color: var(--burgundy);
+      letter-spacing: 0.05em;
+      margin-top: 4px;
+      display: none;
+    }
+
+    .field-error.visible { display: block; }
+
+    .form-submit:hover {
+      background-color: transparent;
+      color: var(--burgundy);
+    }
+
+    /* SCROLL ANIMATIONS */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.8s cubic-bezier(0.25, 0.1, 0.25, 1), transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+
+    /* FOOTER */
+    footer {
+      background-color: var(--footer-bg);
+      padding: 28px 60px 20px;
+      position: relative;
+    }
+    .footer-top { display: flex; justify-content: space-between; align-items: flex-start; max-width: 1200px; margin: 0 auto 20px; }
+    .footer-nav ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .footer-nav ul li a { font-size: 11px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-light); transition: color var(--transition); }
+    .footer-nav ul li a:hover { color: var(--burgundy); }
+    .footer-contact { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
+    .footer-contact a { font-size: 11px; font-weight: 400; letter-spacing: 0.1em; color: var(--text-light); transition: color var(--transition); text-transform: uppercase; }
+    .footer-contact a:hover { color: var(--burgundy); }
+    .footer-copy { font-size: 11px; font-weight: 300; color: var(--text-light); letter-spacing: 0.05em; text-align: right; }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      header { padding: 16px 24px; height: auto; }
+      .header-logo img { width: 100px; }
+      nav { display: none; }
+      .hamburger { display: flex; }
+      .mobile-menu { display: flex; }
+      .contact-section { grid-template-columns: 1fr; gap: 40px; padding: 60px 24px; width: 100%; max-width: 100%; box-sizing: border-box; }
+      .contact-form, .form-field, .form-field input, .form-field textarea, .form-field select { max-width: 100%; box-sizing: border-box; }
+      main { overflow-x: hidden; }
+      .contact-image { display: none; }
+      footer { padding: 40px 24px 28px; }
+      .footer-top { flex-direction: column; gap: 32px; }
+      .footer-contact { align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <a href="index.html" class="header-logo" aria-label="Grace Davidson Studio Home">
+      <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA3NDEuOTYgMjgwLjg3Ij4KICA8ZGVmcz4KICAgIDxzdHlsZT4KICAgICAgLmNscy0xIHsKICAgICAgICBmaWxsOiAjZWRlOGRmOwogICAgICB9CiAgICA8L3N0eWxlPgogIDwvZGVmcz4KICA8Zz4KICAgIDxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTgwLjgsMi4yN2M2LjM4LDAsMTEuMTgsMi4xNSwxNS4yOSw1Ljg3LjMyLjMyLjM4LjgyLjA2LDEuMTQtLjMyLjM4LS42OS43Ni0xLjAxLDEuMDgtLjM4LjQ0LS42OS4zOC0xLjA3LDAtMy41NC0zLjI5LTguMTUtNS4zMS0xMy4zMy01LjMxLTEwLjk5LDAtMTkuNjUsOC45Ny0xOS42NSwxOS45czguNjUsMTkuOSwxOS42NSwxOS45YzcuNzEsMCwxMi41MS0yLjk3LDEzLjE0LTMuNDd2LTExLjg4aC0xMC44Yy0uNjksMC0uODItLjI1LS44Mi0uODJ2LTEuMjZjMC0uNTEuMTMtLjc2LjgyLS43NmgxMi45NWMuNDQsMCwuODIuMzguODIuNzZ2MTQuNjZjMCwuOTUtLjM4LDEuMjYtLjg4LDEuNjQtMS4xNC43Ni02Ljg5LDQuMDQtMTUuMTYsNC4wNC0xMi43LDAtMjIuODctOS45OC0yMi44Ny0yMi42OFM2OC4xLDIuMjcsODAuOCwyLjI3WiIvPgogICAgPHBhdGggY2xhc3M9ImNscy0xIiBkPSJNMTE0LjM0LDMuNzJjMC0uNDQuMzItLjgyLjgyLS44MmgxNS42N2M3LjcxLDAsMTQuMDksNS44MSwxNC4wOSwxMy41MiwwLDYuMzgtNC40MiwxMS41LTEwLjQyLDEzLjJsOS4yMiwxNi4zNmMuMzIuNS4xOSwxLjE0LS40NCwxLjE0aC0xLjk2Yy0uNDQsMC0uNjktLjE5LS44OC0uNTdsLTkuMTYtMTYuNTVjLS44Mi4wNi0xLjUyLjA2LTIuMzQuMDZoLTExLjYydjE2LjI0YzAsLjQ0LS4zOC44Mi0xLjAxLjgyaC0xLjE0Yy0uNDQsMC0uODItLjM4LS44Mi0uODJWMy43MlpNMTMwLjcsMjcuNDFjNi4wNiwwLDExLjE4LTQuNzQsMTEuMTgtMTAuOTlzLTUuMTItMTAuNjEtMTEuMjQtMTAuNjFoLTEzLjI3djIxLjYxaDEzLjMzWiIvPgogICAgPHBhdGggY2xhc3M9ImNscy0xIiBkPSJNMTU1LjQsNDYuMzZMMTc0Ljg2LDIuMzljLjEzLS4yNS40NC0uNDQuNzYtLjQ0aC4xOWMuMzIsMCwuNjMuMDYuODIuNDRsMTkuMjcsNDMuOTdjLjEzLjM4LjEzLjc2LS41Ny43NmgtMS42NGMtLjQ0LDAtLjc2LS4zMi0uODgtLjU3bC01LjEyLTExLjYyaC0yNC4xM2wtNS4wNSwxMS42MmMtLjEzLjI1LS40NC41Ny0uODguNTdoLTEuNzdjLS40NCwwLS42My0uMjUtLjQ0LS43NlpNMTg2LjYxLDMyLjQ2bC0xMC44LTI1LjQ2aC0uMTNsLTEwLjk5LDI1LjQ2aDIxLjkyWiIvPgogICAgPHBhdGggY2xhc3M9ImNscy0xIiBkPSJNMjI4Ljc0LDIuMjdjNi40NCwwLDExLjI0LDIuMTUsMTUuMzUsNS44Ny4zMi4zMi4zOC44Mi4wNiwxLjE0bC0xLjAxLDEuMDhjLS4zOC4zOC0uNjkuMzEtMS4wNy0uMDYtMy42LTMuMjItOC4xNS01LjE4LTEzLjMzLTUuMTgtMTEuMDUsMC0xOS43MSw5LjAzLTE5LjcxLDE5Ljk2czguNjUsMTkuODQsMTkuNzEsMTkuODRjNS40MywwLDkuNTQtMi4xNSwxMy4zMy01LjMxLjM4LS4zMi43Ni0uMzIsMS4wMS0uMTNsMS4wNywxLjA3Yy4zMi4yNS4zMi43NiwwLDEuMDctNC4zLDQuMTctOS43OSw2LjEzLTE1LjQxLDYuMTMtMTIuNjMsMC0yMi44Ny05Ljk4LTIyLjg3LTIyLjY4czEwLjIzLTIyLjgxLDIyLjg3LTIyLjgxWiIvPgogICAgPHBhdGggY2xhc3M9ImNscy0xIiBkPSJNMjYwLjcsMy43MmMwLS40NC4zOC0uODIuODItLjgyaDI1LjMzYy40NCwwLC44Mi4zOC44Mi44MnYxLjA3YzAsLjQ0LS4zOC44Mi0uODIuODJoLTIzLjEydjE3LjQ0aDIwLjAzYy40NCwwLC44Mi4zOC44Mi44MnYxLjA3YzAsLjQ0LS4zOC44Mi0uODIuODJoLTIwLjAzdjE4LjdoMjMuMTJjLjQ0LDAsLjgyLjM4LjgyLjgydjEuMDFjMCwuNDQtLjM4LjgyLS44Mi44MmgtMjUuMzNjLS40NCwwLS44Mi0uMzgtLjgyLS44MlYzLjcyWiIvPgogICAgPHBhdGggY2xhc3M9ImNscy0xIiBkPSJNMzI0LjgyLDMuNzJjMC0uNDQuMzgtLjgyLjc2LS44MmgxMy4zOWMxMi4yNiwwLDIyLjI0LDkuOTIsMjIuMjQsMjIuMDVzLTkuOTgsMjIuMTctMjIuMjQsMjIuMTdoLTEzLjM5Yy0uMzgsMC0uNzYtLjM4LS43Ni0uODJWMy43MlpNMzM4LjQ2LDQ0LjRjMTEuMDYsMCwxOS41OC04LjQsMTkuNTgtMTkuNDZzLTguNTMtMTkuMzMtMTkuNTgtMTkuMzNoLTEwLjY4djM4Ljc5aDEwLjY4WiIvPgogICAgPHBhdGggY2xhc3M9ImNscy0xIiBkPSJNMzcxLjE4LDQ2LjM2bDE5LjQ2LTQzLjk3Yy4xMy0uMjUuNDQtLjQ0Ljc2LS40NGguMTljLjMyLDAsLjYzLjA2LjgyLjQ0bDE5LjI3LDQzLjk3Yy4xMy4zOC4xMy43Ni0uNTcuNzZoLTEuNjRjLS40NCwwLS43Ni0uMzItLjg4LS41N2wtNS4xMi0xMS42MmgtMjQuMTNsLTUuMDUsMTEuNjJjLS4xMy4yNS0uNDQuNTctLjg4LjU3aC0xLjc3Yy0uNDQsMC0uNjMtLjI1LS40NC0uNzZaTTQwMi4zOSwzMi40NmwtMTAuOC0yNS40NmgtLjEzbC0xMC45OSwyNS40NmgyMS45MloiLz4KICAgIDxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTQxNi41NCwzLjcyYy0uMjUtLjUxLS4wNi0uODIuNTEtLjgyaDEuNzFjLjM4LDAsLjYzLjI1LjY5LjQ0bDE3LjA2LDM5LjIzaC4xM2wxNy4yNS0zOS4yM2MuMDYtLjE5LjMyLS40NC42OS0uNDRoMS42NGMuNTcsMCwuODIuMzguNTcuODhsLTE5LjM5LDQzLjRjLS4xMy4zMi0uMzguNTctLjc2LjU3aC0uMzJjLS4zOCwwLS42My0uMzgtLjY5LS41N2wtMTkuMDgtNDMuNDZaIi8+CiAgICA8cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik00NzAuMywzLjcyYzAtLjQ0LjM4LS44Mi44Mi0uODJoMS4zOWMuNDQsMCwuODIuMzguODIuODJ2NDIuNThjMCwuNS0uNDQuODItLjg4LjgyaC0xLjMzYy0uNDQsMC0uODItLjM4LS44Mi0uODJWMy43MloiLz4KICAgIDxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTQ5My4wNCwzLjcyYzAtLjQ0LjM4LS44Mi43Ni0uODJoMTMuMzljMTIuMjYsMCwyMi4yNCw5LjkyLDIyLjI0LDIyLjA1cy05Ljk4LDIyLjE3LTIyLjI0LDIyLjE3aC0xMy4zOWMtLjM4LDAtLjc2LS4zOC0uNzYtLjgyVjMuNzJaTTUwNi42OCw0NC40YzExLjA2LDAsMTkuNTgtOC40LDE5LjU4LTE5LjQ2cy04LjUzLTE5LjMzLTE5LjU4LTE5LjMzaC0xMC42OHYzOC43OWgxMC42OFoiLz4KICAgIDxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTU0My4zMiw0MS4yNWwuNTctLjc2Yy40NC0uNS44OC0uNjksMS4zOS0uMjUuNjMuNTcsNS4zMSw0Ljg2LDExLjY5LDQuODYsNS43NSwwLDEwLjYxLTMuODUsMTAuNjEtOC40NiwwLTUuNjItNC42MS04LjE1LTEyLjI2LTEwLjc0LTcuMzMtMi41OS0xMi4xOS01LjE4LTEyLjE5LTEyLjQ1LDAtNC43NCwzLjc5LTExLjE4LDEzLjY1LTExLjE4LDYuMjUsMCwxMC44NywzLjIyLDEwLjg3LDMuMjIuMjUuMTkuNjkuNjMuMjUsMS4zMy0uMTkuMjUtLjM4LjU3LS41MS44Mi0uMzguNS0uNzYuNy0xLjM5LjMyLS4xOS0uMTMtNC40Mi0yLjk3LTkuMjktMi45Ny03Ljc3LDAtMTAuNjgsNC44LTEwLjY4LDguNCwwLDUuMzcsNC4xMSw3LjcxLDEwLjQ5LDkuNzksOC42NSwyLjk3LDE0LjE1LDYsMTQuMTUsMTMuMzMsMCw2LjMyLTYuNTEsMTEuMjQtMTMuNzcsMTEuMjRzLTEyLjU3LTQuNDItMTMuMzktNS4xOGMtLjM4LS4zMi0uNy0uNjMtLjE5LTEuMzNaIi8+CiAgICA8cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik02MDYuMTgsMi4yN2MxMi43LDAsMjIuODEsMTAuMTcsMjIuODEsMjIuODFzLTEwLjExLDIyLjY4LTIyLjgxLDIyLjY4LTIyLjc0LTkuOTgtMjIuNzQtMjIuNjgsMTAuMTEtMjIuODEsMjIuNzQtMjIuODFaTTYwNi4xOCw0NC45N2MxMS4wNSwwLDIwLjAzLTguODUsMjAuMDMtMTkuOXMtOC45Ny0yMC4wMy0yMC4wMy0yMC4wMy0xOS45Niw4Ljk3LTE5Ljk2LDIwLjAzLDguOTEsMTkuOSwxOS45NiwxOS45WiIvPgogICAgPHBhdGggY2xhc3M9ImNscy0xIiBkPSJNNjQ1LjUzLDMuMDljMC0uNTEuNDQtLjgyLjk1LS44MmgxLjA3bDMwLjMyLDM5LjQ4aC4wNlYzLjcyYzAtLjQ0LjM4LS44Mi44Mi0uODJoMS4yNmMuNDQsMCwuODIuMzguODIuODJ2NDMuMjFjMCwuNTctLjUuODItMS4wMS44MmgtLjgyYy0uMDYsMC0uNTctLjE5LTMwLjU4LTM5Ljg2aC0uMDZ2MzguNDFjMCwuNDQtLjM4LjgyLS44Mi44MmgtMS4yYy0uNDQsMC0uODItLjM4LS44Mi0uODJWMy4wOVoiLz4KICA8L2c+CiAgPGc+CiAgICA8cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik00NzIuMzYsMjcwLjk3YzIyLjg1LDYuMzMsNDcuMjMtNTUuNjksNTMuODQtNzMuMzRsMTkuNjktNTIuNTZjLjQyLTEuMTMsMi4wNy0yLjE5LDIuNzEtMi40MS44NC0uMjgsMS45MywyLjUxLDEuNjYsMy41OS0zLjI2LDEzLjE0LTE0LjI4LDU4Ljc2LS44MSw2Ni45LDExLjc5LDcuMTIsMzIuNTYtMTMuOTEsNDAuMDQtMjIuNDIsMTQuNzYtMTYuODIsMjYuOTUtMzQuNzUsMzkuNjgtNTMuMjYuNTYtLjgyLDIuNzItMS45NywzLjQzLTEuNDQsNC4xLDMuMDQtOS42NCwxNC43Ni03LjE3LDMyLjc2LjY0LDQuNjYsMi44OCw5LjM0LDUuOTUsMTEuNjMsMy45MywyLjkzLDguODYsNC40MSwxMy45MywyLjA5LDguMzMtMy44MSwxMS4zOS0xNy43LDQuMzQtMjQtMS4xMy0xLjAxLTIxLjYtMTAuNDctMTQuMzktMTcuNTcsNS43LTUuNjIsMTUuODUsOC40OSwxOC44OSwxMy40NSwxNC4yNCw2LjE0LDMxLjE1LDUuMjgsNDUuNzEtLjQ1LDE4LjA2LTcuMSwyNC4wMS0yMC43MiwzMC4xMy0yNi41OS41MS0uNDksMi42NiwxLjgzLDIuMDMsMi45OS0xMy41NiwyNC45Mi00Ni4zMyw0MC4wMi03NS42MywyOS4yNCwyLjQ5LDExLjY0LjYsMjAuNi04LjI5LDI2LjA3LTcuNTgsNC42Ni0xNy4xNSwxLjY0LTIyLjUtNS4yNS01LjEtNi41Ny00LjgyLTE0LjAxLTQuNTItMjMuMjYtMTEuNDMsMTUuMjUtMjEuNjQsMjkuNzYtMzQuNTUsNDMtOC45OCw5LjIxLTI3LjI1LDI0LjI2LTM5LjQ5LDE2LjgxLTExLjI0LTYuODQtNy45OS0yOS43MS03LjI4LTQyLjkyLTEwLjE5LDI1LjItMjguODQsODMuOTMtNTQuOTQsOTkuMTQtOC44OSw1LjE4LTE5LjI4LDIuMTUtMjQtNy4yMS00LjM0LTguNi02LjUtMTkuMDQtNi4yMS0yOS4yOWwxLjc0LTYxLjc3Yy00LjE1LDYuOTItMTEuMTEsMTkuNjktMjAuNCwxNy41LTguNi0yLjAzLTYuODctMTQuNzMtNi45OC0yMi41MS0xNi40OSwxOC40NC0zOS40OCw0MC43NC02NC42MSw0Mi45Mi0yMS4xNSwxLjg0LTIzLjEtMjYuMTEtMjMuMDQtNDAuNzdsLTcuNjgsMTkuNjhjLTIuNzIsNi45OC04LjM1LDE2LjQ1LTE2LjQ1LDE0LjI2LTkuNDQtMi41NS03LjU4LTE3LjIxLTcuMjYtMjUuNTItMTcuNCwyOC40MS01OC40OSw4OC4wMy05NC43NCw4OS43OC0xMC44OC41Mi0yMC4xMS02LjM3LTIyLjgyLTE2Ljg0LTUuMzUtMjAuNjcsMi4wOS00My45Nyw3LjcxLTY0LjY4LTIyLjY3LDIyLjI2LTQ4LDI1LjQ1LTc3LjY1LDI3LjQyLDIuMzcsMTYuNzQtMy4xNSwzMi43OS0xNi4xLDQzLjc2LTIwLjAxLDE2Ljk1LTQ4LjU4LDIzLjI5LTczLjI0LDE0Ljk4LTE1LjcxLTUuMjktMjQuODMtMTkuNDUtMjIuMDUtMzUuMywzLjMxLTE4Ljg2LDE5LjM3LTMxLDM4LjIxLTMxLjc1LDguOTUtLjM2LDE3LjIxLDIuODIsMjQuMDIsNy41MywxNC41OC0zLjM2LDI4LjM4LTQuNCw0My45My0zLjgtNS42Ny0yNS0zMi45Mi0zOC45OS00NS45LTY2LjE1LTcuNzEtMTYuMTQtOC4wOS0zNC43OS44My01MC41Myw5LjY1LTE3LjAxLDMyLjI0LTIyLjg2LDQ4Ljk4LTEzLjYxLDkuNTcsNS4yOSwxMi42NiwxNi4wNiw4LjU2LDI1LjQ0LTMuNzgsOC42NS0xMS43NSwxNC41Ni0xOS44NCwxNi4zMi0xOC43NCw0LjA2LTM0LjA5LTEzLjQtMjcuNC0xMi40Miw0LjQ3LjY2LDEwLjY2LDEwLjIxLDIzLjcyLDguNjksNy43LS44OSwxNC42MS01LjA3LDE4LjczLTEyLjI1LDQuNTgtNy45OCwyLjMzLTE4LTYuNTMtMjIuNS0xNC44NS03LjUzLTM0LjYzLTIuMDQtNDIuODUsMTIuOTMtNy45NywxNC41MS03LjM5LDMxLjY1LS4zMiw0Ni40MSwxMi40LDI1LjksNDAuMDMsNDAuMTcsNDYuNzYsNjcuNTYsNDIuNDItMS42NSw3MS44Ny05LjA5LDg4LjYtNDkuNjFsNy45Ny0xOS4zMWMtMTYuMjQsMi40Ny0zNS4zNCw3LjU4LTUwLjg4LjkyLTYuNTUtMi44MS0xMC40OC0xMC44Mi03LjU2LTE3LjQ0LjQyLS45NiwzLjQxLDEuNTEsMy4zMSwyLjU2LTIuMTEsMjIuNzUsNDYuNjEsMTEuNjMsNTcuODcsOC40Miw0LjQ2LTguMjQsMTUuMzctMzMuNjcsMjMuMzQtMzQuODQsNy43Mi0xLjEzLTguNjEsMjcuOTktMTAuMDcsMzEuNDZsMzQuNzItOS4wMmM4LjgyLTIuMjksMTguMDQtMi45OSwyNi44My0yLjg4LDYuODYuMDksMTEuNTksNi42OSwxMC4xNiwxMi4zNy0yLjk1LDExLjctMS4yLTguMTMtMTAuMzItOC4xNS0yMS42LS4wNC00My41Miw2LjktNjQuNDYsMTMuMmwtMjAuNjgsMzQuNjljLTcuMzUsMTIuMzMtMzQuNzYsOTUuNjksNS4zOCw5Mi4yMiw3LjY4LS42NiwxNS4yLTQuMDcsMjEuNjItOC4zNywzMS4xNS0yMC44NSw1OS4yLTYxLjQxLDc2LjQyLTkzLjI3LjU1LTEuMDIsMi4zNy0yLjAxLDMuMDEtMi4xNC44Ni0uMTcsMS44NiwyLjM1LDEuNTYsMy4zNS0xLjg0LDYuMS0xMC4zMSwzNC4xOC0uMjksMzYuMTYsMS45NC4zOCw2LjI4LTEuNiw3LjQ2LTMuODYsNy43NS0xNC45MSwxMi43MS0zMi4zOCwxNy4xOC00OC4xNy4yNy0uOTYsMS40OC0yLjE3LDIuMS0yLjIyLjgxLS4wNiwxLjk5LDIuMjQsMS44NywzLjMxLTEuNzQsMTQuODEtNi41OSw2My4wNiwyMC4yLDU3LjQ0LDI4LjE5LTUuOTEsNTMuNDItMzMuMzEsNjkuMzgtNTYuMDQsNC4wNS01Ljc3LDExLjE4LTEzLjI5LDE3LjUzLTguNzIsMi4yNywxLjY0LDQuODYsNS40OCwxLjUyLDcuNDRsLTQuNDQtNC4xYy0xLjA5LTEuMDEtNS4wOC43Mi02LjE1LDEuODQtMTMuMDEsMTMuNjMtMTQuNjEsMzYuNjEtOC44LDM5LjI5LDcuOTIsMy42NCwxOS45Ni0xOS42LDIxLjE4LTI5Ljc0LDIuOTItMjQuMzMsNC45MS01NC42MywxNi41NC03Ni4wMy40NS0uODQsMi45Mi0xLjk2LDMuODEtMi4wOCw0LjItLjU2LDEuMTEsMTYuOTguMzMsMjAuMTFsLTE1LjgyLDYzLjI3Yy0zLjM0LDEzLjM1LTUuODIsODAuNDIsMS40Nyw5OS4wOSwxLjQ4LDMuNzgsNS41OSw3LjU0LDguNTQsOC4zNlpNNDY0LjczLDEzNi4wNmM0LjIxLTE0LjYxLDguNzEtMjkuMDYsOS45Ni00NC4xMi02LjU2LDE0LjQzLTguODksMjguOTgtOS45Niw0NC4xMlpNMjI3LjQsMTM1LjYzYzUuNDUtNy4yOCw5LjUtMTQuMjMsMTEuNzgtMjIuNTYtNS4wNSw3LjI3LTkuMzEsMTQuMzgtMTEuNzgsMjIuNTZaTTc2Ljg4LDIxOS4xM2M4LjI2LDkuMzgsMTAuMDUsMjAuOTYsMy45OCwzMC43Ni00LjI0LDYuODQtMTEuOTIsOS43My0xOS43OCw3LjYxLTYuMS0xLjY1LTEyLjI1LTcuMTQtMTEuOTgtMTUuMDMuMzktMTEuMzYsOS4xNi0xOS40NCwxOS40LTI0LjgzLTkuOC03LjA4LTIyLjYxLTcuMzItMzQuMDUtMi4yMy05LjIyLDQuMS0xNy41MywxMy42NS0xOS4yMywyNS4xMy0yLjEsMTQuMTUsNS44NywyNi4yMiwxOS44NCwzMC42NCwyMi43NSw3LjIxLDQ4Ljc1LDEuNjMsNjcuNDctMTMuNTMsMTIuNzItMTAuMywxOC4wNi0yNS44MSwxNS41My00MS42MS0xNC0uNDItMjcuMzctLjg4LTQxLjE4LDMuMDlaTTc0LjA5LDI1MS4xM2M5LjQyLTguNjgsNy40Ny0yMi42NC0xLjkxLTMwLjE1LTguNzEsMy42MS0xNi44OCwxMC4wNS0xOC42OCwxOS43My0xLjAzLDUuNDksMi41NywxMC4yOCw2Ljk1LDEyLjA1LDMuOCwxLjU0LDkuOSwxLjgyLDEzLjY1LTEuNjRaIi8+CiAgICA8ZWxsaXBzZSBjbGFzcz0iY2xzLTEiIGN4PSI1NTYuMTkiIGN5PSIxMTUuMDIiIHJ4PSI3Ljg1IiByeT0iMi44NSIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMzI2LjQ2IDYzNC40NSkgcm90YXRlKC03Ny44MykiLz4KICA8L2c+Cjwvc3ZnPg==" alt="Grace Davidson Studio" style="width:160px;height:auto;display:block;">
+    </a>
+    <nav aria-label="Main navigation">
+      <ul>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+    </nav>
+    <button class="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <div class="menu-overlay" id="menuOverlay"></div>
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+
+  <main>
+    <section class="contact-section">
+
+      <!-- PLACEHOLDER IMAGE — replace with /images/contact/contact-image.jpg -->
+      <div class="contact-image reveal" role="img" aria-label="Grace Davidson Studio interior design"></div>
+
+      <div class="contact-content reveal reveal-delay-2">
+
+        <svg class="contact-heading-svg" viewBox="0 0 370.26 65.29" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs>
+              <clipPath id="clipContact">
+                <rect class="contact-clip-rect" x="0" y="0" width="0" height="65.29"/>
+              </clipPath>
+            </defs>
+            <path fill="#43121F" clip-path="url(#clipContact)" d="M184.66,26.51c2.2-2.65,4.97-3.01,5.99-1.47.28.42.23,1.78.06,1.83-.76-.51-1.88-1.33-2.55-1.49-3.75,1.9-6.53,7.81-4.3,12.03,3.32,6.29,16.96-.2,23.77-10.2,1.76-2.58,3.04-5.58,4.58-8.3-8.23,1.35-18.6.62-17.24-5.53.06-.26.62-1.09.7-.93.12.23.51.98.5,1.33-.06,5.55,10.15,4.83,16.86,3.52l6.36-9.21,1.56-.37c.35-.08.46,1.5.26,1.86l-3.97,7.07c6.83-.87,16.88-3.89,20.43-.72.72.64,1.05,2.86-.12,3.17l-.89-2.26c-.91-2.31-14.8-.03-20.78,1.51l-6.87,9.76c-3.05,4.34-6.86,15.86-6.14,22.17.42,3.66,3.78,5.49,7.22,4.77s6.38-2.59,9.3-4.68c8.83-6.32,14.44-15.03,21.63-23.38-5.19,11.3-27.05,35.5-36.95,27.99-5.47-4.14-1.28-15.26,1.38-22.77-5.98,6.15-17.27,12.24-22.02,6.87-1.59-1.8-1.72-4.51-1.53-7.34-6.23,5.71-12.56,11.3-20.94,11.48-4.96.11-5.78-6.08-5.68-11.83-1.74,3.71-2.89,8.48-6.19,9.08-.67.12-2.24-.51-2.56-1.15-.82-1.65-.81-3.51-.76-5.6-6.58,8.31-17.16,20.95-27.25,22.63-4.09.68-7.75-1.7-8.32-5.79-.34-2.46.02-5.06.25-7.72-4.14,7.5-14.32,24.41-21.4,22.27-7.8-2.35-3.29-22.16-1.48-31.56.44-2.28.71-4.32.48-6.86-3.94,3.06-6.17,6.63-8.72,10.62l-4.75,7.44c-.28.44-1.44.94-1.87,1.01-2.6.4-.19-9.11,1.33-14.48-5.85,5.34-13.41,6.38-20.57,3.73.9,4.03-1.13,7.65-4.97,7.77s-6.05-3.65-5.56-8.48c-8.2,9.2-22.7,19.79-34.66,17.36C-5.47,48.88-.46,25.25,11.4,12.88c4.26-4.44,9.52-7.61,15.57-8.35,5.03-.62,9.71,2.66,9.4,7.68-.2,3.3-2.85,5.51-5.6,6.34-2.92.88-6.04-.3-8.34-2.44l-.65-.6c-.19-.18,0-.68.13-.9.46-.73,5.66,5.58,10.51,1.82,1.86-1.44,2.99-3.27,2.65-5.62-.65-4.47-6.29-6.07-11.56-4.28-5.95,2.02-10.73,5.98-14.35,11.04C3.49,25.47-1.61,38.58,2.91,46.58c3.42,6.05,13.18,4.73,20.24,1.3,9.59-4.66,17.76-11.91,23.36-20.84.31.08,1.11.48,1,.71l-.55,1.11c-1.46,2.94-3.22,5.91-2.55,9.17.46,2.23,2.42,3.59,4.37,3.47,2.08-.13,3.51-1.86,3.72-4.14.18-2.01-.76-3.44-2.69-4.21-1.68-.67-3.39-3.4-1.58-4.51,2.11-.16,3.87,2.53,4.59,4.59,8.09,3.97,17.59,1.71,22.72-5.73.28-.17,1.01-.58,1.04-.35l.15.97c-1.94,5.48-4.02,10.5-3.77,16.68l7.5-11.48c2.26-3.45,6.44-8.61,8.2-7.4,1.35.93.92,4.36.31,7.46-1.73,8.85-5.98,28.01.31,30.46,3.47,1.35,8.53-4.19,11.57-8.19,6.05-7.98,10.52-16.67,14.46-25.87,1.63-3.81,3.64-7.27,5.54-10.87-8.21,1.35-18.59.71-17.22-5.59.04-.18.61-1,.69-.85.12.23.5.98.5,1.32-.05,5.56,10.15,4.83,16.86,3.53,2.09-3.24,4.02-6.19,6.36-9.21l1.56-.37c.35-.08.46,1.5.27,1.84l-3.98,7.08c6.79-.88,17.04-3.9,20.44-.71.78.73,1.01,2.81-.13,3.18l-.89-2.28c-.9-2.31-14.8-.03-20.79,1.51l-6.63,9.46c-2.05,2.93-3.13,6.65-4.43,10.01-2.09,5.42-3.51,13.5.09,16.21s9.85-.12,14.22-3.45c8.35-6.38,14.99-14.28,20.75-23.05,1.46-2.22,4.01-3.51,5.8-2.14.51.39.71,1.87.42,2.36l-1.76-1.58c-.33-.3-1.52.12-1.88.46-4.4,4.18-5.22,11.56-2.72,12.53,2.79,1.08,6.25-9.4,8.17-14.64l.31-.84c.06-.16.65-.19.7-.03.54,1.8-1.5,6.59-.64,13.72.17,1.45,1.35,3.94,2.63,4.25,8.4,2.04,19.25-7.99,25.16-15.11Z"/>
+            <path fill="#43121F" clip-path="url(#clipContact)" d="M349.65,40.25c1.79,3.58,1.91,7.43-.95,10.11-1.17,1.1-2.92,1.6-4.22,1.02-1.48-.65-2.39-2.53-2.08-4.29.56-3.17,3.12-5.53,5.63-7.24l-3.02-7.6c-5.1,9.63-11.13,19.23-22.27,21.6-4.01.85-7.3-1.51-8.09-5.55-1.44-7.33.3-14.37,1.58-22.03-5.92,10.57-15.99,34.9-27.93,29.93-5.98-2.49-6.5-11.83-4.57-18.83l4.4-15.96c.96-3.49,1.22-7.2.95-10.75-.42-5.57-5.3-10.45-10.97-9.17-6.79,1.54-9.77,9.42-6.75,15.43,1.34,2.68,6.28,6.36,5.76,6.8-.28.64-5.71-3.87-7.14-6.96-2.96-6.37.49-14.58,7.47-16.44,5.76-1.54,11.52,2.74,12.53,8.5.76,4.31.44,8.89-.71,13.13l-4.28,15.68c-1.79,6.58-1.43,15.39,3.85,17.45s10.34-2.61,13.93-7.75c6.26-8.96,10.74-18.54,15.31-28.54.45-.99,1.95-.45,1.66.6-2.68,9.93-6.05,21.08-3.78,29.23.82,2.95,3.56,4.66,6.59,3.99,6.4-1.43,11.34-5.47,15.26-10.65l8.62-14.84c-.04-.07,1.17.07,1.09.31l-.47,1.39c-1.2,3.54.21,7.03,2.13,10.29l14.35-7.31,6.74-4.66c-.5,2.22-2.28,3.37-3.99,4.44-5.27,3.28-10.63,5.95-16.62,8.68ZM347.51,49.78c2.62-2.44,2.8-5.82.92-8.76-4.16,2.88-6.3,7.63-3.76,9.12.62.36,2.31.15,2.84-.35Z"/>
+          </svg>
+
+        <p class="contact-intro">We would love to hear about your project. Get in touch using the form below and we will get back to you within 24 hours.</p>
+
+        <!-- Replace YOUR_FORMSPREE_ID with your Formspree endpoint ID -->
+        <form class="contact-form" id="contactForm" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST" novalidate>
+
+          <div class="form-field">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Your name" required>
+            <span class="field-error" id="nameError">Please enter your name.</span>
+          </div>
+
+          <div class="form-field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="your@email.com" required>
+            <span class="field-error" id="emailError">Please enter a valid email address.</span>
+          </div>
+
+          <div class="form-field">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone" placeholder="Your phone number" required pattern="[+]?[0-9\s\-\(\)]{7,20}">
+            <span class="field-error" id="phoneError">Please enter a valid phone number.</span>
+          </div>
+
+          <div class="form-field">
+            <label for="service">What service are you interested in?</label>
+            <select id="service" name="service" required>
+
+              <option value="" disabled selected>Select a service</option>
+              <option value="Full Service">Full Service</option>
+              <option value="E-Design">E-Design</option>
+              <option value="Hourly Consultation">Hourly Consultation</option>
+              <option value="Not sure yet">Not sure yet</option>
+            </select>
+            <span class="field-error" id="serviceError">Please select a service.</span>
+          </div>
+
+          <div class="form-field">
+            <label for="message">Tell us about your project</label>
+            <textarea id="message" name="message" placeholder="Share as much as you like..." rows="4" required></textarea>
+            <span class="field-error" id="messageError">Please tell us about your project.</span>
+          </div>
+
+          <button type="submit" class="form-submit">Send Enquiry</button>
+
+        </form>
+      </div>
+
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+
+  <footer class="reveal">
+    <div class="footer-top">
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <ul>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="footer-contact">
+        <a href="https://www.instagram.com/grace_davidson_" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="mailto:hello@gracedavidsonstudio.com">hello@gracedavidsonstudio.com</a>
+        <p class="footer-copy">&copy; 2026 GRACE DAVIDSON STUDIO. ALL RIGHTS RESERVED.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // HAMBURGER
+    const hamburger = document.querySelector(".hamburger");
+    const mobileMenu = document.getElementById("mobileMenu");
+    const menuOverlay = document.getElementById("menuOverlay");
+    function toggleMenu() {
+      const isOpen = mobileMenu.classList.contains("open");
+      mobileMenu.classList.toggle("open");
+      menuOverlay.classList.toggle("open");
+      hamburger.classList.toggle("open");
+      hamburger.setAttribute("aria-expanded", !isOpen);
+    }
+    hamburger.addEventListener("click", toggleMenu);
+    menuOverlay.addEventListener("click", toggleMenu);
+    mobileMenu.querySelectorAll("a").forEach(a => a.addEventListener("click", toggleMenu));
+
+    // CONTACT SVG DRAW ANIMATION
+    const contactClip = document.querySelector(".contact-clip-rect");
+    if (contactClip) {
+      const drawObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            setTimeout(() => contactClip.classList.add("drawn"), 200);
+            drawObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.3 });
+      drawObserver.observe(document.querySelector(".contact-heading-svg"));
+    }
+
+    // FORM VALIDATION
+    const form = document.getElementById("contactForm");
+    if (form) {
+      form.addEventListener("submit", function(e) {
+        e.preventDefault();
+        let valid = true;
+
+        const name = document.getElementById("name");
+        const nameError = document.getElementById("nameError");
+        if (!name.value.trim()) {
+          nameError.classList.add("visible");
+          name.style.borderColor = "rgba(67,18,31,0.6)";
+          valid = false;
+        } else {
+          nameError.classList.remove("visible");
+          name.style.borderColor = "";
+        }
+
+        const email = document.getElementById("email");
+        const emailError = document.getElementById("emailError");
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email.value.trim())) {
+          emailError.classList.add("visible");
+          email.style.borderColor = "rgba(67,18,31,0.6)";
+          valid = false;
+        } else {
+          emailError.classList.remove("visible");
+          email.style.borderColor = "";
+        }
+
+        const phone = document.getElementById("phone");
+        const phoneError = document.getElementById("phoneError");
+        const phoneRegex = /^[+]?[0-9\s\-\(\)]{7,20}$/;
+        if (!phoneRegex.test(phone.value.trim())) {
+          phoneError.classList.add("visible");
+          phone.style.borderColor = "rgba(67,18,31,0.6)";
+          valid = false;
+        } else {
+          phoneError.classList.remove("visible");
+          phone.style.borderColor = "";
+        }
+
+        const service = document.getElementById("service");
+        const serviceError = document.getElementById("serviceError");
+        if (!service.value) {
+          serviceError.classList.add("visible");
+          service.style.borderColor = "rgba(67,18,31,0.6)";
+          valid = false;
+        } else {
+          serviceError.classList.remove("visible");
+          service.style.borderColor = "";
+        }
+
+        const message = document.getElementById("message");
+        const messageError = document.getElementById("messageError");
+        if (!message.value.trim()) {
+          messageError.classList.add("visible");
+          message.style.borderColor = "rgba(67,18,31,0.6)";
+          valid = false;
+        } else {
+          messageError.classList.remove("visible");
+          message.style.borderColor = "";
+        }
+
+        if (valid) form.submit();
+      });
+    }
+
+    // SCROLL ANIMATIONS
+    const revealEls = document.querySelectorAll(".reveal");
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    revealEls.forEach(el => revealObserver.observe(el));
+  </script>
+
+</body>
+</html>
