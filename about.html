@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About | Grace Davidson Studio | London Interior Designer</title>
+  <meta name="description" content="Grace Davidson Studio is founded by Grace Davidson, a London based interior designer with a degree in Product Design and a lifelong immersion in the antiques trade." />
+  <link rel="canonical" href="https://www.gracedavidsonstudio.com/about" />
+  <meta property="og:title" content="About | Grace Davidson Studio" />
+  <meta property="og:description" content="London based interior designer creating layered, characterful homes that feel unmistakably personal." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.gracedavidsonstudio.com/about" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --burgundy: #43121F;
+      --cream: #FFFAF3;
+      --footer-bg: #F3EADC;
+      --text: #121212;
+      --text-light: #5a5a5a;
+      --white: #ffffff;
+      --font: "Poppins", sans-serif;
+      --transition: 0.3s ease;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font);
+      background-color: var(--cream);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { text-decoration: none; color: inherit; }
+    img { display: block; max-width: 100%; }
+
+    /* =====================
+       HEADER
+    ===================== */
+    header {
+      background-color: var(--burgundy);
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 60px;
+      height: 90px;
+      position: relative;
+    }
+
+    .header-logo img {
+      width: 160px;
+      height: auto;
+      display: block;
+    }
+
+    /* =====================
+       NAVIGATION
+    ===================== */
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: flex-end;
+      gap: 48px;
+    }
+
+    nav ul li a {
+      display: block;
+      font-size: 14px;
+      font-weight: 300;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(237, 232, 223, 0.9);
+      position: relative;
+      transition: color var(--transition);
+    }
+
+    nav ul li a::after {
+      content: "";
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background-color: rgba(237, 232, 223, 0.6);
+      transition: width var(--transition);
+    }
+
+    nav ul li a:hover { color: #ede8df; }
+    nav ul li a:hover::after { width: 100%; }
+    nav ul li a.active { color: #ede8df; }
+
+    /* =====================
+       HAMBURGER
+    ===================== */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      z-index: 1001;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 1.5px;
+      background-color: #ede8df;
+      transition: all 0.3s ease;
+      transform-origin: center;
+    }
+
+    .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    /* =====================
+       MOBILE MENU
+    ===================== */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 280px;
+      height: 100vh;
+      background-color: var(--burgundy);
+      z-index: 1000;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      padding: 100px 40px 40px;
+      transition: right 0.35s ease;
+      box-shadow: -4px 0 20px rgba(0,0,0,0.2);
+    }
+
+    .mobile-menu.open { right: 0; }
+
+    .mobile-menu ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .mobile-menu ul li a {
+      font-size: 18px;
+      font-weight: 300;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(237, 232, 223, 0.9);
+      transition: color var(--transition);
+    }
+
+    .mobile-menu ul li a:hover { color: #ede8df; }
+
+    .menu-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.4);
+      z-index: 999;
+    }
+
+    .menu-overlay.open { display: block; }
+
+    /* =====================
+       PAGE HEADER
+    ===================== */
+    .page-header {
+      padding: 80px 60px 60px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .page-header h1 {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--text-light);
+    }
+
+    /* =====================
+       ABOUT SECTION
+    ===================== */
+    .about-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 100px 60px 100px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .about-image {
+      position: relative;
+    }
+
+    /* PLACEHOLDER IMAGE , replace with your real portrait photo from /images/about/grace-portrait.jpg */
+    .about-image-wrap {
+      width: 100%;
+      aspect-ratio: 3/4;
+      overflow: hidden;
+      background: url("https://picsum.photos/seed/portrait/600/800") center/cover no-repeat;
+    }
+
+    .about-content {
+      padding-top: 0;
+    }
+
+    .about-clip-rect {
+      transition: width 1.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .about-clip-rect.drawn {
+      width: 583.43px;
+    }
+
+    .about-heading-svg {
+      width: 192px;
+      height: auto;
+      display: block;
+      margin-bottom: 28px;
+    }
+
+    .about-name {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-top: 16px;
+      margin-bottom: 4px;
+    }
+
+    .about-title {
+      font-size: 11px;
+      font-weight: 300;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-light);
+    }
+
+    .about-content p {
+      font-size: 12px;
+      font-weight: 300;
+      line-height: 1.95;
+      color: var(--text);
+      margin-bottom: 24px;
+    }
+
+    .about-content p:last-of-type {
+      margin-bottom: 0;
+    }
+
+    /* =====================
+       PORTFOLIO CTA SECTION
+    ===================== */
+    /* PLACEHOLDER IMAGE , replace background URL with /images/about/portfolio-cta.jpg */
+    .portfolio-cta {
+      position: relative;
+      width: 100%;
+      height: 70vh;
+      overflow: hidden;
+      cursor: pointer;
+      text-decoration: none;
+      display: flex;
+      align-items: flex-end;
+    }
+
+    .portfolio-cta-bg {
+      position: absolute;
+      inset: 0;
+      background: url("https://picsum.photos/seed/ctafull/1600/900") center/cover no-repeat;
+      transition: transform 0.7s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+
+    .portfolio-cta:hover .portfolio-cta-bg {
+      transform: scale(1.04);
+    }
+
+    .portfolio-cta-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.05) 50%, transparent 100%);
+    }
+
+    .portfolio-cta-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      padding: 0 60px 28px;
+      display: flex;
+      align-items: flex-end;
+    }
+
+    .portfolio-cta-label {
+      display: none;
+    }
+
+    .portfolio-cta-text {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--white);
+      letter-spacing: 0.02em;
+      max-width: 400px;
+    }
+
+    .portfolio-cta-left {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .portfolio-cta-link {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--white);
+      border-bottom: 1px solid transparent;
+      padding-bottom: 3px;
+      transition: border-color var(--transition);
+      flex-shrink: 0;
+    }
+
+    .portfolio-cta:hover .portfolio-cta-link {
+      border-color: rgba(255,255,255,0.9);
+    }
+
+    /* =====================
+       FOOTER
+    ===================== */
+    footer {
+      background-color: var(--footer-bg);
+      padding: 28px 60px 20px;
+      max-height: 240px;
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      max-width: 1200px;
+      margin: 0 auto 20px;
+    }
+
+    .footer-nav ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .footer-nav ul li a {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      transition: color var(--transition);
+    }
+
+    .footer-nav ul li a:hover { color: var(--burgundy); }
+
+    .footer-contact {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 8px;
+    }
+
+    .footer-contact a {
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      color: var(--text-light);
+      transition: color var(--transition);
+      text-transform: uppercase;
+    }
+
+    .footer-contact a:hover { color: var(--burgundy); }
+
+    .footer-copy {
+      font-size: 11px;
+      font-weight: 300;
+      color: var(--text-light);
+      letter-spacing: 0.05em;
+      text-align: right;
+    }
+
+    /* =====================
+       SCROLL ANIMATIONS
+    ===================== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.8s cubic-bezier(0.25, 0.1, 0.25, 1), transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* =====================
+       RESPONSIVE
+    ===================== */
+    @media (max-width: 768px) {
+      header { padding: 16px 24px; height: auto; }
+      .header-logo img { width: 100px; }
+      nav { display: none; }
+      .hamburger { display: flex; }
+      .mobile-menu { display: flex; }
+      .page-header { padding: 50px 24px 40px; }
+      .about-section { grid-template-columns: 1fr; gap: 24px; padding: 60px 24px 60px; }
+      .about-image { order: 2; max-width: 60%; margin: 0 auto; }
+      .about-content { order: 1; }
+      .about-image-wrap { aspect-ratio: 3/4; }
+      .portfolio-cta { height: 50vh; }
+      .portfolio-cta-content { padding: 0 24px 36px; flex-direction: column; align-items: flex-start; gap: 20px; }
+      footer { padding: 40px 24px 28px; max-height: none; }
+      .footer-top { flex-direction: column; gap: 32px; }
+      .footer-contact { align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <a href="index.html" class="header-logo" aria-label="Grace Davidson Studio Home">
+      <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA3NDEuOTYgMjgwLjg3Ij4KICA8ZGVmcz4KICAgIDxzdHlsZT4KICAgICAgLmNscy0xIHsKICAgICAgICBmaWxsOiAjZWRlOGRmOwogICAgICB9CiAgICA8L3N0eWxlPgogIDwvZGVmcz4KICA8Zz4KICAgIDxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTgwLjgsMi4yN2M2LjM4LDAsMTEuMTgsMi4xNSwxNS4yOSw1Ljg3LjMyLjMyLjM4LjgyLjA2LDEuMTQtLjMyLjM4LS42OS43Ni0xLjAxLDEuMDgtLjM4LjQ0LS42OS4zOC0xLjA3LDAtMy41NC0zLjI5LTguMTUtNS4zMS0xMy4zMy01LjMxLTEwLjk5LDAtMTkuNjUsOC45Ny0xOS42NSwxOS45czguNjUsMTkuOSwxOS42NSwxOS45YzcuNzEsMCwxMi41MS0yLjk3LDEzLjE0LTMuNDd2LTExLjg4aC0xMC44Yy0uNjksMC0uODItLjI1LS44Mi0uODJ2LTEuMjZjMC0uNTEuMTMtLjc2LjgyLS43NmgxMi45NWMuNDQsMCwuODIuMzguODIuNzZ2MTQuNjZjMCwuOTUtLjM4LDEuMjYtLjg4LDEuNjQtMS4xNC43Ni02Ljg5LDQuMDQtMTUuMTYsNC4wNC0xMi43LDAtMjIuODctOS45OC0yMi44Ny0yMi42OFM2OC4xLDIuMjcsODAuOCwyLjI3WiIvPgogICAgPHBhdGggY2xhc3M9ImNscy0xIiBkPSJNMTE0LjM0LDMuNzJjMC0uNDQuMzItLjgyLjgyLS44MmgxNS42N2M3LjcxLDAsMTQuMDksNS44MSwxNC4wOSwxMy41MiwwLDYuMzgtNC40MiwxMS41LTEwLjQyLDEzLjJsOS4yMiwxNi4zNmMuMzIuNS4xOSwxLjE0LS40NCwxLjE0aC0xLjk2Yy0uNDQsMC0uNjktLjE5LS44OC0uNTdsLTkuMTYtMTYuNTVjLS44Mi4wNi0xLjUyLjA2LTIuMzQuMDZoLTExLjYydjE2LjI0YzAsLjQ0LS4zOC44Mi0xLjAxLjgyaC0xLjE0Yy0uNDQsMC0uODItLjM4LS44Mi0uODJWMy43MlpNMTMwLjcsMjcuNDFjNi4wNiwwLDExLjE4LTQuNzQsMTEuMTgtMTAuOTlzLTUuMTItMTAuNjEtMTEuMjQtMTAuNjFoLTEzLjI3djIxLjYxaDEzLjMzWiIvPgogICAgPHBhdGggY2xhc3M9ImNscy0xIiBkPSJNMTU1LjQsNDYuMzZMMTc0Ljg2LDIuMzljLjEzLS4yNS40NC0uNDQuNzYtLjQ0aC4xOWMuMzIsMCwuNjMuMDYuODIuNDRsMTkuMjcsNDMuOTdjLjEzLjM4LjEzLjc2LS41Ny43NmgtMS42NGMtLjQ0LDAtLjc2LS4zMi0uODgtLjU3bC01LjEyLTExLjYyaC0yNC4xM2wtNS4wNSwxMS42MmMtLjEzLjI1LS40NC41Ny0uODguNTdoLTEuNzdjLS40NCwwLS42My0uMjUtLjQ0LS43NlpNMTg2LjYxLDMyLjQ2bC0xMC44LTI1LjQ2aC0uMTNsLTEwLjk5LDI1LjQ2aDIxLjkyWiIvPgogICAgPHBhdGggY2xhc3M9ImNscy0xIiBkPSJNMjI4Ljc0LDIuMjdjNi40NCwwLDExLjI0LDIuMTUsMTUuMzUsNS44Ny4zMi4zMi4zOC44Mi4wNiwxLjE0bC0xLjAxLDEuMDhjLS4zOC4zOC0uNjkuMzEtMS4wNy0uMDYtMy42LTMuMjItOC4xNS01LjE4LTEzLjMzLTUuMTgtMTEuMDUsMC0xOS43MSw5LjAzLTE5LjcxLDE5Ljk2czguNjUsMTkuODQsMTkuNzEsMTkuODRjNS40MywwLDkuNTQtMi4xNSwxMy4zMy01LjMxLjM4LS4zMi43Ni0uMzIsMS4wMS0uMTNsMS4wNywxLjA3Yy4zMi4yNS4zMi43NiwwLDEuMDctNC4zLDQuMTctOS43OSw2LjEzLTE1LjQxLDYuMTMtMTIuNjMsMC0yMi44Ny05Ljk4LTIyLjg3LTIyLjY4czEwLjIzLTIyLjgxLDIyLjg3LTIyLjgxWiIvPgogICAgPHBhdGggY2xhc3M9ImNscy0xIiBkPSJNMjYwLjcsMy43MmMwLS40NC4zOC0uODIuODItLjgyaDI1LjMzYy40NCwwLC44Mi4zOC44Mi44MnYxLjA3YzAsLjQ0LS4zOC44Mi0uODIuODJoLTIzLjEydjE3LjQ0aDIwLjAzYy40NCwwLC44Mi4zOC44Mi44MnYxLjA3YzAsLjQ0LS4zOC44Mi0uODIuODJoLTIwLjAzdjE4LjdoMjMuMTJjLjQ0LDAsLjgyLjM4LjgyLjgydjEuMDFjMCwuNDQtLjM4LjgyLS44Mi44MmgtMjUuMzNjLS40NCwwLS44Mi0uMzgtLjgyLS44MlYzLjcyWiIvPgogICAgPHBhdGggY2xhc3M9ImNscy0xIiBkPSJNMzI0LjgyLDMuNzJjMC0uNDQuMzgtLjgyLjc2LS44MmgxMy4zOWMxMi4yNiwwLDIyLjI0LDkuOTIsMjIuMjQsMjIuMDVzLTkuOTgsMjIuMTctMjIuMjQsMjIuMTdoLTEzLjM5Yy0uMzgsMC0uNzYtLjM4LS43Ni0uODJWMy43MlpNMzM4LjQ2LDQ0LjRjMTEuMDYsMCwxOS41OC04LjQsMTkuNTgtMTkuNDZzLTguNTMtMTkuMzMtMTkuNTgtMTkuMzNoLTEwLjY4djM4Ljc5aDEwLjY4WiIvPgogICAgPHBhdGggY2xhc3M9ImNscy0xIiBkPSJNMzcxLjE4LDQ2LjM2bDE5LjQ2LTQzLjk3Yy4xMy0uMjUuNDQtLjQ0Ljc2LS40NGguMTljLjMyLDAsLjYzLjA2LjgyLjQ0bDE5LjI3LDQzLjk3Yy4xMy4zOC4xMy43Ni0uNTcuNzZoLTEuNjRjLS40NCwwLS43Ni0uMzItLjg4LS41N2wtNS4xMi0xMS42MmgtMjQuMTNsLTUuMDUsMTEuNjJjLS4xMy4yNS0uNDQuNTctLjg4LjU3aC0xLjc3Yy0uNDQsMC0uNjMtLjI1LS40NC0uNzZaTTQwMi4zOSwzMi40NmwtMTAuOC0yNS40NmgtLjEzbC0xMC45OSwyNS40NmgyMS45MloiLz4KICAgIDxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTQxNi41NCwzLjcyYy0uMjUtLjUxLS4wNi0uODIuNTEtLjgyaDEuNzFjLjM4LDAsLjYzLjI1LjY5LjQ0bDE3LjA2LDM5LjIzaC4xM2wxNy4yNS0zOS4yM2MuMDYtLjE5LjMyLS40NC42OS0uNDRoMS42NGMuNTcsMCwuODIuMzguNTcuODhsLTE5LjM5LDQzLjRjLS4xMy4zMi0uMzguNTctLjc2LjU3aC0uMzJjLS4zOCwwLS42My0uMzgtLjY5LS41N2wtMTkuMDgtNDMuNDZaIi8+CiAgICA8cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik00NzAuMywzLjcyYzAtLjQ0LjM4LS44Mi44Mi0uODJoMS4zOWMuNDQsMCwuODIuMzguODIuODJ2NDIuNThjMCwuNS0uNDQuODItLjg4LjgyaC0xLjMzYy0uNDQsMC0uODItLjM4LS44Mi0uODJWMy43MloiLz4KICAgIDxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTQ5My4wNCwzLjcyYzAtLjQ0LjM4LS44Mi43Ni0uODJoMTMuMzljMTIuMjYsMCwyMi4yNCw5LjkyLDIyLjI0LDIyLjA1cy05Ljk4LDIyLjE3LTIyLjI0LDIyLjE3aC0xMy4zOWMtLjM4LDAtLjc2LS4zOC0uNzYtLjgyVjMuNzJaTTUwNi42OCw0NC40YzExLjA2LDAsMTkuNTgtOC40LDE5LjU4LTE5LjQ2cy04LjUzLTE5LjMzLTE5LjU4LTE5LjMzaC0xMC42OHYzOC43OWgxMC42OFoiLz4KICAgIDxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTU0My4zMiw0MS4yNWwuNTctLjc2Yy40NC0uNS44OC0uNjksMS4zOS0uMjUuNjMuNTcsNS4zMSw0Ljg2LDExLjY5LDQuODYsNS43NSwwLDEwLjYxLTMuODUsMTAuNjEtOC40NiwwLTUuNjItNC42MS04LjE1LTEyLjI2LTEwLjc0LTcuMzMtMi41OS0xMi4xOS01LjE4LTEyLjE5LTEyLjQ1LDAtNC43NCwzLjc5LTExLjE4LDEzLjY1LTExLjE4LDYuMjUsMCwxMC44NywzLjIyLDEwLjg3LDMuMjIuMjUuMTkuNjkuNjMuMjUsMS4zMy0uMTkuMjUtLjM4LjU3LS41MS44Mi0uMzguNS0uNzYuNy0xLjM5LjMyLS4xOS0uMTMtNC40Mi0yLjk3LTkuMjktMi45Ny03Ljc3LDAtMTAuNjgsNC44LTEwLjY4LDguNCwwLDUuMzcsNC4xMSw3LjcxLDEwLjQ5LDkuNzksOC42NSwyLjk3LDE0LjE1LDYsMTQuMTUsMTMuMzMsMCw2LjMyLTYuNTEsMTEuMjQtMTMuNzcsMTEuMjRzLTEyLjU3LTQuNDItMTMuMzktNS4xOGMtLjM4LS4zMi0uNy0uNjMtLjE5LTEuMzNaIi8+CiAgICA8cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik02MDYuMTgsMi4yN2MxMi43LDAsMjIuODEsMTAuMTcsMjIuODEsMjIuODFzLTEwLjExLDIyLjY4LTIyLjgxLDIyLjY4LTIyLjc0LTkuOTgtMjIuNzQtMjIuNjgsMTAuMTEtMjIuODEsMjIuNzQtMjIuODFaTTYwNi4xOCw0NC45N2MxMS4wNSwwLDIwLjAzLTguODUsMjAuMDMtMTkuOXMtOC45Ny0yMC4wMy0yMC4wMy0yMC4wMy0xOS45Niw4Ljk3LTE5Ljk2LDIwLjAzLDguOTEsMTkuOSwxOS45NiwxOS45WiIvPgogICAgPHBhdGggY2xhc3M9ImNscy0xIiBkPSJNNjQ1LjUzLDMuMDljMC0uNTEuNDQtLjgyLjk1LS44MmgxLjA3bDMwLjMyLDM5LjQ4aC4wNlYzLjcyYzAtLjQ0LjM4LS44Mi44Mi0uODJoMS4yNmMuNDQsMCwuODIuMzguODIuODJ2NDMuMjFjMCwuNTctLjUuODItMS4wMS44MmgtLjgyYy0uMDYsMC0uNTctLjE5LTMwLjU4LTM5Ljg2aC0uMDZ2MzguNDFjMCwuNDQtLjM4LjgyLS44Mi44MmgtMS4yYy0uNDQsMC0uODItLjM4LS44Mi0uODJWMy4wOVoiLz4KICA8L2c+CiAgPGc+CiAgICA8cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik00NzIuMzYsMjcwLjk3YzIyLjg1LDYuMzMsNDcuMjMtNTUuNjksNTMuODQtNzMuMzRsMTkuNjktNTIuNTZjLjQyLTEuMTMsMi4wNy0yLjE5LDIuNzEtMi40MS44NC0uMjgsMS45MywyLjUxLDEuNjYsMy41OS0zLjI2LDEzLjE0LTE0LjI4LDU4Ljc2LS44MSw2Ni45LDExLjc5LDcuMTIsMzIuNTYtMTMuOTEsNDAuMDQtMjIuNDIsMTQuNzYtMTYuODIsMjYuOTUtMzQuNzUsMzkuNjgtNTMuMjYuNTYtLjgyLDIuNzItMS45NywzLjQzLTEuNDQsNC4xLDMuMDQtOS42NCwxNC43Ni03LjE3LDMyLjc2LjY0LDQuNjYsMi44OCw5LjM0LDUuOTUsMTEuNjMsMy45MywyLjkzLDguODYsNC40MSwxMy45MywyLjA5LDguMzMtMy44MSwxMS4zOS0xNy43LDQuMzQtMjQtMS4xMy0xLjAxLTIxLjYtMTAuNDctMTQuMzktMTcuNTcsNS43LTUuNjIsMTUuODUsOC40OSwxOC44OSwxMy40NSwxNC4yNCw2LjE0LDMxLjE1LDUuMjgsNDUuNzEtLjQ1LDE4LjA2LTcuMSwyNC4wMS0yMC43MiwzMC4xMy0yNi41OS41MS0uNDksMi42NiwxLjgzLDIuMDMsMi45OS0xMy41NiwyNC45Mi00Ni4zMyw0MC4wMi03NS42MywyOS4yNCwyLjQ5LDExLjY0LjYsMjAuNi04LjI5LDI2LjA3LTcuNTgsNC42Ni0xNy4xNSwxLjY0LTIyLjUtNS4yNS01LjEtNi41Ny00LjgyLTE0LjAxLTQuNTItMjMuMjYtMTEuNDMsMTUuMjUtMjEuNjQsMjkuNzYtMzQuNTUsNDMtOC45OCw5LjIxLTI3LjI1LDI0LjI2LTM5LjQ5LDE2LjgxLTExLjI0LTYuODQtNy45OS0yOS43MS03LjI4LTQyLjkyLTEwLjE5LDI1LjItMjguODQsODMuOTMtNTQuOTQsOTkuMTQtOC44OSw1LjE4LTE5LjI4LDIuMTUtMjQtNy4yMS00LjM0LTguNi02LjUtMTkuMDQtNi4yMS0yOS4yOWwxLjc0LTYxLjc3Yy00LjE1LDYuOTItMTEuMTEsMTkuNjktMjAuNCwxNy41LTguNi0yLjAzLTYuODctMTQuNzMtNi45OC0yMi41MS0xNi40OSwxOC40NC0zOS40OCw0MC43NC02NC42MSw0Mi45Mi0yMS4xNSwxLjg0LTIzLjEtMjYuMTEtMjMuMDQtNDAuNzdsLTcuNjgsMTkuNjhjLTIuNzIsNi45OC04LjM1LDE2LjQ1LTE2LjQ1LDE0LjI2LTkuNDQtMi41NS03LjU4LTE3LjIxLTcuMjYtMjUuNTItMTcuNCwyOC40MS01OC40OSw4OC4wMy05NC43NCw4OS43OC0xMC44OC41Mi0yMC4xMS02LjM3LTIyLjgyLTE2Ljg0LTUuMzUtMjAuNjcsMi4wOS00My45Nyw3LjcxLTY0LjY4LTIyLjY3LDIyLjI2LTQ4LDI1LjQ1LTc3LjY1LDI3LjQyLDIuMzcsMTYuNzQtMy4xNSwzMi43OS0xNi4xLDQzLjc2LTIwLjAxLDE2Ljk1LTQ4LjU4LDIzLjI5LTczLjI0LDE0Ljk4LTE1LjcxLTUuMjktMjQuODMtMTkuNDUtMjIuMDUtMzUuMywzLjMxLTE4Ljg2LDE5LjM3LTMxLDM4LjIxLTMxLjc1LDguOTUtLjM2LDE3LjIxLDIuODIsMjQuMDIsNy41MywxNC41OC0zLjM2LDI4LjM4LTQuNCw0My45My0zLjgtNS42Ny0yNS0zMi45Mi0zOC45OS00NS45LTY2LjE1LTcuNzEtMTYuMTQtOC4wOS0zNC43OS44My01MC41Myw5LjY1LTE3LjAxLDMyLjI0LTIyLjg2LDQ4Ljk4LTEzLjYxLDkuNTcsNS4yOSwxMi42NiwxNi4wNiw4LjU2LDI1LjQ0LTMuNzgsOC42NS0xMS43NSwxNC41Ni0xOS44NCwxNi4zMi0xOC43NCw0LjA2LTM0LjA5LTEzLjQtMjcuNC0xMi40Miw0LjQ3LjY2LDEwLjY2LDEwLjIxLDIzLjcyLDguNjksNy43LS44OSwxNC42MS01LjA3LDE4LjczLTEyLjI1LDQuNTgtNy45OCwyLjMzLTE4LTYuNTMtMjIuNS0xNC44NS03LjUzLTM0LjYzLTIuMDQtNDIuODUsMTIuOTMtNy45NywxNC41MS03LjM5LDMxLjY1LS4zMiw0Ni40MSwxMi40LDI1LjksNDAuMDMsNDAuMTcsNDYuNzYsNjcuNTYsNDIuNDItMS42NSw3MS44Ny05LjA5LDg4LjYtNDkuNjFsNy45Ny0xOS4zMWMtMTYuMjQsMi40Ny0zNS4zNCw3LjU4LTUwLjg4LjkyLTYuNTUtMi44MS0xMC40OC0xMC44Mi03LjU2LTE3LjQ0LjQyLS45NiwzLjQxLDEuNTEsMy4zMSwyLjU2LTIuMTEsMjIuNzUsNDYuNjEsMTEuNjMsNTcuODcsOC40Miw0LjQ2LTguMjQsMTUuMzctMzMuNjcsMjMuMzQtMzQuODQsNy43Mi0xLjEzLTguNjEsMjcuOTktMTAuMDcsMzEuNDZsMzQuNzItOS4wMmM4LjgyLTIuMjksMTguMDQtMi45OSwyNi44My0yLjg4LDYuODYuMDksMTEuNTksNi42OSwxMC4xNiwxMi4zNy0yLjk1LDExLjctMS4yLTguMTMtMTAuMzItOC4xNS0yMS42LS4wNC00My41Miw2LjktNjQuNDYsMTMuMmwtMjAuNjgsMzQuNjljLTcuMzUsMTIuMzMtMzQuNzYsOTUuNjksNS4zOCw5Mi4yMiw3LjY4LS42NiwxNS4yLTQuMDcsMjEuNjItOC4zNywzMS4xNS0yMC44NSw1OS4yLTYxLjQxLDc2LjQyLTkzLjI3LjU1LTEuMDIsMi4zNy0yLjAxLDMuMDEtMi4xNC44Ni0uMTcsMS44NiwyLjM1LDEuNTYsMy4zNS0xLjg0LDYuMS0xMC4zMSwzNC4xOC0uMjksMzYuMTYsMS45NC4zOCw2LjI4LTEuNiw3LjQ2LTMuODYsNy43NS0xNC45MSwxMi43MS0zMi4zOCwxNy4xOC00OC4xNy4yNy0uOTYsMS40OC0yLjE3LDIuMS0yLjIyLjgxLS4wNiwxLjk5LDIuMjQsMS44NywzLjMxLTEuNzQsMTQuODEtNi41OSw2My4wNiwyMC4yLDU3LjQ0LDI4LjE5LTUuOTEsNTMuNDItMzMuMzEsNjkuMzgtNTYuMDQsNC4wNS01Ljc3LDExLjE4LTEzLjI5LDE3LjUzLTguNzIsMi4yNywxLjY0LDQuODYsNS40OCwxLjUyLDcuNDRsLTQuNDQtNC4xYy0xLjA5LTEuMDEtNS4wOC43Mi02LjE1LDEuODQtMTMuMDEsMTMuNjMtMTQuNjEsMzYuNjEtOC44LDM5LjI5LDcuOTIsMy42NCwxOS45Ni0xOS42LDIxLjE4LTI5Ljc0LDIuOTItMjQuMzMsNC45MS01NC42MywxNi41NC03Ni4wMy40NS0uODQsMi45Mi0xLjk2LDMuODEtMi4wOCw0LjItLjU2LDEuMTEsMTYuOTguMzMsMjAuMTFsLTE1LjgyLDYzLjI3Yy0zLjM0LDEzLjM1LTUuODIsODAuNDIsMS40Nyw5OS4wOSwxLjQ4LDMuNzgsNS41OSw3LjU0LDguNTQsOC4zNlpNNDY0LjczLDEzNi4wNmM0LjIxLTE0LjYxLDguNzEtMjkuMDYsOS45Ni00NC4xMi02LjU2LDE0LjQzLTguODksMjguOTgtOS45Niw0NC4xMlpNMjI3LjQsMTM1LjYzYzUuNDUtNy4yOCw5LjUtMTQuMjMsMTEuNzgtMjIuNTYtNS4wNSw3LjI3LTkuMzEsMTQuMzgtMTEuNzgsMjIuNTZaTTc2Ljg4LDIxOS4xM2M4LjI2LDkuMzgsMTAuMDUsMjAuOTYsMy45OCwzMC43Ni00LjI0LDYuODQtMTEuOTIsOS43My0xOS43OCw3LjYxLTYuMS0xLjY1LTEyLjI1LTcuMTQtMTEuOTgtMTUuMDMuMzktMTEuMzYsOS4xNi0xOS40NCwxOS40LTI0LjgzLTkuOC03LjA4LTIyLjYxLTcuMzItMzQuMDUtMi4yMy05LjIyLDQuMS0xNy41MywxMy42NS0xOS4yMywyNS4xMy0yLjEsMTQuMTUsNS44NywyNi4yMiwxOS44NCwzMC42NCwyMi43NSw3LjIxLDQ4Ljc1LDEuNjMsNjcuNDctMTMuNTMsMTIuNzItMTAuMywxOC4wNi0yNS44MSwxNS41My00MS42MS0xNC0uNDItMjcuMzctLjg4LTQxLjE4LDMuMDlaTTc0LjA5LDI1MS4xM2M5LjQyLTguNjgsNy40Ny0yMi42NC0xLjkxLTMwLjE1LTguNzEsMy42MS0xNi44OCwxMC4wNS0xOC42OCwxOS43My0xLjAzLDUuNDksMi41NywxMC4yOCw2Ljk1LDEyLjA1LDMuOCwxLjU0LDkuOSwxLjgyLDEzLjY1LTEuNjRaIi8+CiAgICA8ZWxsaXBzZSBjbGFzcz0iY2xzLTEiIGN4PSI1NTYuMTkiIGN5PSIxMTUuMDIiIHJ4PSI3Ljg1IiByeT0iMi44NSIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMzI2LjQ2IDYzNC40NSkgcm90YXRlKC03Ny44MykiLz4KICA8L2c+Cjwvc3ZnPg==" alt="Grace Davidson Studio" style="width:160px;height:auto;display:block;">
+    </a>
+    <nav aria-label="Main navigation">
+      <ul>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="about.html" class="active">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <button class="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <!-- MOBILE MENU -->
+  <div class="menu-overlay" id="menuOverlay"></div>
+  <div class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
+    <ul>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+
+  <main>
+
+
+
+    <!-- ABOUT SECTION -->
+    <section class="about-section">
+
+      <!-- PORTRAIT IMAGE -->
+      <!-- PLACEHOLDER — replace with /images/about/grace-portrait.jpg -->
+      <div class="about-image reveal">
+        <div class="about-image-wrap" role="img" aria-label="Grace Davidson, founder of Grace Davidson Studio"></div>
+        <p class="about-name">Grace Davidson</p>
+        <p class="about-title">Founder, Grace Davidson Studio</p>
+      </div>
+
+      <!-- COPY -->
+      <div class="about-content reveal reveal-delay-2">
+        <svg class="about-heading-svg" viewBox="0 0 583.43 165.3" xmlns="http://www.w3.org/2000/svg" aria-label="About">
+  <defs>
+    <clipPath id="aboutReveal">
+      <rect class="about-clip-rect" x="0" y="0" width="0" height="165.3"/>
+    </clipPath>
+  </defs>
+  <path fill="#43121F" clip-path="url(#aboutReveal)" d="M545.54,54.4l-31.99,3.76-20.32,24.73c-2.53,3.08-4.11,6.64-5.92,10.16-7.43,14.49-16.69,34.97-15.47,50.79.65,8.36,6.76,14.42,15.19,14.7,14.42.47,31.74-11.38,43.29-20.65,18.07-14.52,33.6-31.44,47.36-50.03.46-.62,1.73-1.05,2.27-.85.63.24,1.07,1.94.59,2.58-14.58,19.65-33.75,40.08-53.18,54.88-11.4,8.69-27.76,18.75-41.83,17.27-9.03-.95-15.79-7.45-16.76-16.44-1.82-16.76,7.42-36.79,14.74-52.05l-11.65,9.39c-12.6,10.15-32.01,20.58-48.27,18.97-11.64-1.16-14.64-13.2-13.94-24.18l.65-10.19c-5.54,8.86-11.21,25.02-21.05,23.96-3.91-.42-6.24-4.13-6.6-7.89-.59-6.07,1.3-11.57,3.39-17.5-16.59,14.22-37.11,15.7-57.25,7.68,1.46,8.37-2.42,17.41-10.97,19.8-9,2.51-17.22-4.52-18.44-13.41-.82-5.98.48-11.42,3.07-17.02l-10.05,7.09c-8.9,5.57-18.89,7.99-29.39,8.23l-16.07.36c-3.15,4.53-6.76,8.69-11.55,11.44-4.06,2.33-9.7,2.91-11.71.75-2.25-2.43-.44-6.85,3.26-9.68,5.02-3.85,10.94-5.61,17.52-6.07,3.36-6.19,7.48-13.95,5.43-20.73-2.96.63-5.04,1.84-7.22,3.61-8.47,6.87-15.19,15.13-21.25,24.18-3.38,5.05-7.63,11.94-11.8,11.07-7.23-1.52-2.26-24.15-.51-33.29-10.61,19.26-28.82,51.92-50.44,57.48-7.64,1.96-14.82-1.12-18.58-7.83-2.43-4.34-3.64-8.88-4.26-13.92-.51-7,.21-13.7,1.6-20.73,2.68-13.53,6.41-26.47,10.05-39.88-16.11,3.78-31.67,9.37-46.82,15.79-12.15,28.04-28.85,72.02-55.42,87.35-6.97,4.02-14.54,4.9-22.32,2.96-9.27-2.3-16.42-8.73-19.02-18.06-5.55-19.89,8.03-39.93,28.55-42.7,5.67-.77,10.77-.53,16.63.19.63.08,1.7,1.13,1.78,1.75.1.8-1.25,1.91-2.19,1.73-7.58-1.52-14.84-1.46-22.1,1.08-15.35,5.39-24.03,21.98-19.24,37.49,2.41,7.82,8.42,13.21,16.16,15.25,16.05,4.23,28.95-7.02,38.52-19.44,8.93-11.59,16.05-24.05,21.95-37.5l12.46-28.4c-15.3,5.79-31.48,11.18-47.39,10.57-7.22-.5-13.95-2.88-18.92-8.16l-4.12-4.38c-.42-.45-.56-1.94-.21-2.4,1.83-2.37,4.48,3.09,9.37,6.76,15.04,11.29,45.78.03,63.03-6.7l9.03-21.08c3.66-8.55,7.56-16.69,12.19-24.74,6.04-10.5,14.93-21.53,27.38-18.51,16.94,4.1,8.86,31.98,5.46,46.69,8.79-1.74,17.5-3.03,26.47-2.93,8.32.09,19.76,2.86,16.83,7.88-.32.54-1.85.59-2.2.06-.68-.99-1.67-2.48-2.76-2.8-12.46-3.69-26.51-1.11-39.45,1.31l-8.97,34.35c-1.93,7.39-2.99,14.71-3.11,22.23-.1,6.17.99,12.18,4.06,17.34s7.91,7.43,13.58,6.37c21.52-4,43.18-43.46,52.8-63.06.95-1.94,2.4-4.01,3.01-5.96l9.08-28.95c2.13-6.81,10.76-27.25,15.24-25.11,3.17,1.51.14,8.81-1.36,13.94-5.61,14.23-11.93,27.76-19.19,41.31-2.96,11.46-5.24,22.69-6.61,34.44-.09,3.14-.2,5.59.58,8.68,1.6-1.15,2.64-2.15,3.64-3.55l9.54-13.48c4.89-6.92,16.99-19.99,24.33-21.75,3.42-.82,6.24,1.5,6.49,4.79.51,6.73-1.79,12.74-5.09,19.1l16.1-.44c18.99-.51,32.45-11.3,45.15-24.34.56-.57,2.39-.71,2.96-.21.62.53.56,2.21-.08,3.07-5.95,8.03-11.59,16.95-10.15,27.12.94,6.68,7.68,11.69,14.36,9.53,6.75-2.19,9.14-10.95,6.91-18.21-6.86-3.45-15.66-11.66-10.78-16.07,4.67-4.22,11.52,6.29,14.14,13.1,11.65,6.63,26.57,8.09,39.53,3.91,9.35-3.02,16.8-8.95,23.11-16.35.48-.57,2.56-.59,3.09-.08s.48,1.91.13,2.75l-5.61,13.45c-1.86,4.45-2.73,12.97.46,14.96,2.87,1.79,6.96-1.52,9.47-5.64,6.47-10.65,11.95-21.59,16.75-33.14.34-.81,1.38-1.59,2.06-1.53.85.08,1.91,1.32,1.66,2.22-3.93,13.94-11.24,47.35,5.43,48.96,23.06,2.23,51.34-20.71,66.65-37.4l12.35-20.46c.35-.62.24-.86-.45-.6-16.34,1.12-49.58,1.94-45.61-18.21.09-.46.57-1.48.95-1.76s1.35-.14,1.74.12c.47.31.76,1.63.62,2.2-1.86,8.01,5.41,12.16,13.32,13.54,4.9.85,9.79,1.56,14.8,1.29l17.44-.92,14.15-19.03,6.36-6.09c.5-.48,2.09-.57,2.67-.34,2.46.97-.24,6.86-2.82,10.62l-6.71,9.8-2.18,2.97-.07.79,19.27-2.3c8.22-.98,16.23-1.35,24.51-1.05,3.4.12,6.8.85,9.74,2.19,3.41,1.55,5.01,4.83,4.27,8.41l-.45,2.19c-.1.49-1.7.46-2.12.19-1.72-1.07.19-4.33-1.48-6.55-2.75-3.66-18.31-3.76-25.26-2.94ZM102.69,66.24c15.59-6.3,30.11-11.37,45.85-14.99,2.83-11.73,6.72-24.59,4.8-36.29-.98-3.16-2.54-6.07-5.7-7.35-9.02-3.65-16.87,3.4-22.15,11.23-5.02,7.44-9.05,15.13-12.58,23.42l-10.22,23.98ZM224.86,40.08c3.18-6.27,5.74-12.63,7.86-19.18-3.65,6.2-6.17,12.37-7.86,19.18ZM512.82,53.76l12.38-18.16c-5.68,5.96-10.42,12.32-14.93,19.23.96.28,1.87-.14,2.54-1.07ZM508.56,59.06l-.21-.76-4.72,6.31.38.35,4.56-5.9ZM321.55,84.45c-1.22-2.53-2.77-4.55-5.17-6.17.64,2.96,2.65,4.8,5.17,6.17ZM241.4,99.38c-5.61.4-13.2,3.85-15.06,8.77,6.06.65,11.5-3.91,15.06-8.77Z"/>
+</svg>
+        <p>Grace Davidson Studio was founded by Grace Davidson, a London based interior designer with a degree in Product Design and a lifelong immersion in the antiques trade through her family&rsquo;s specialist antique lighting business.</p>
+
+        <p>We have a deep understanding of how people interact with the things around them, and that thinking runs through every project we take on. How a room flows. How light moves through a space. How a piece of joinery sits within a room, not just as a functional object but as something considered, crafted, and integral to the whole space. Every material, every finish, every detail exists in relation to everything else.</p>
+
+        <p>We believe that incorporating antique and vintage pieces alongside contemporary design is what transforms a space from beautiful to truly memorable. Access to exceptional vintage pieces that you simply would not find on the high street is something we bring to every project.</p>
+
+        <p>Great interiors are built on great relationships. We take the time to understand how you live, what you love, and the feeling you want your home to have. From initial layouts through to the finest details, layering texture, natural materials, and considered touches of colour alongside bespoke joinery and carefully sourced pieces. The result is a home that feels full of life and personality, functional and beautiful, and entirely your own.</p>
+      </div>
+
+    </section>
+
+    <!-- PORTFOLIO CTA -->
+    <!-- PLACEHOLDER IMAGE — replace with /images/about/portfolio-cta.jpg -->
+    <a href="portfolio.html" class="portfolio-cta reveal" aria-label="View our portfolio">
+      <div class="portfolio-cta-bg"></div>
+      <div class="portfolio-cta-overlay"></div>
+      <div class="portfolio-cta-content">
+        <div class="footer-top" style="width:100%;margin-bottom:0;">
+          <div class="portfolio-cta-left">
+            <p class="portfolio-cta-label">View our Portfolio</p>
+            <p class="portfolio-cta-text">Spaces designed to be lived in, not just looked at.</p>
+          </div>
+          <span class="portfolio-cta-link">View our Portfolio</span>
+        </div>
+      </div>
+    </a>
+
+  </main>
+
+  <!-- FOOTER -->
+
+  <footer class="reveal">
+    <div class="footer-top">
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <ul>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="footer-contact">
+        <a href="https://www.instagram.com/grace_davidson_" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="mailto:hello@gracedavidsonstudio.com">hello@gracedavidsonstudio.com</a>
+        <p class="footer-copy">&copy; 2026 GRACE DAVIDSON STUDIO. ALL RIGHTS RESERVED.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // HAMBURGER
+    const hamburger = document.querySelector(".hamburger");
+    const mobileMenu = document.getElementById("mobileMenu");
+    const menuOverlay = document.getElementById("menuOverlay");
+
+    function toggleMenu() {
+      const isOpen = mobileMenu.classList.contains("open");
+      mobileMenu.classList.toggle("open");
+      menuOverlay.classList.toggle("open");
+      hamburger.classList.toggle("open");
+      hamburger.setAttribute("aria-expanded", !isOpen);
+    }
+
+    hamburger.addEventListener("click", toggleMenu);
+    menuOverlay.addEventListener("click", toggleMenu);
+    mobileMenu.querySelectorAll("a").forEach(a => a.addEventListener("click", toggleMenu));
+
+    // ABOUT SVG DRAW ANIMATION
+    const clipRect = document.querySelector(".about-clip-rect");
+    if (clipRect) {
+      const drawObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            setTimeout(() => clipRect.classList.add("drawn"), 200);
+            drawObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.3 });
+      drawObserver.observe(document.querySelector(".about-heading-svg"));
+    }
+
+    // SCROLL ANIMATIONS
+    const revealEls = document.querySelectorAll(".reveal");
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
