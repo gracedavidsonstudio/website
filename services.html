@@ -302,11 +302,11 @@
     /* RESPONSIVE */
 
     @media (max-width: 768px) {
-      .service-heading-svg { display: block; }
-      .svc-clip-rect { width: 3000px !important; transition: none !important; }
-      .service-divider svg path { stroke-width: 3.5; stroke-opacity: 1; }
-      .service-image-inner.img-hourly ~ .service-content .service-heading-svg,
+      .service-heading-svg { display: block; max-width: 100%; }
+      svg[style*="width:340px"] { width: 220px !important; }
+      svg[style*="width:260px"] { width: 180px !important; }
       svg[viewBox="0 0 2012.7 356.49"] { width: 100% !important; }
+      .service-divider svg path { stroke-width: 3.5; stroke-opacity: 1; }
     }
 
     @media (max-width: 768px) {
@@ -368,7 +368,7 @@
         </div>
 
         <div class="service-content reveal reveal-delay-2">
-          <svg class="service-heading-svg" viewBox="0 0 1091.61 247.71" xmlns="http://www.w3.org/2000/svg" style="width:272px;height:auto;display:block;margin-bottom:16px;">
+          <svg class="service-heading-svg" viewBox="0 0 1091.61 247.71" xmlns="http://www.w3.org/2000/svg" style="width:340px;height:auto;display:block;margin-bottom:16px;">
   <defs>
     <clipPath id="clipFull">
       <rect class="svc-clip-rect" data-clip-id="clipFull" x="0" y="0" width="0" height="247.71"/>
@@ -442,7 +442,7 @@
         </div>
 
         <div class="service-content reveal reveal-delay-2">
-          <svg class="service-heading-svg" viewBox="0 0 784.34 309.03" xmlns="http://www.w3.org/2000/svg" style="width:208px;height:auto;display:block;margin-bottom:16px;">
+          <svg class="service-heading-svg" viewBox="0 0 784.34 309.03" xmlns="http://www.w3.org/2000/svg" style="width:260px;height:auto;display:block;margin-bottom:16px;">
   <defs>
     <clipPath id="clipEdesign">
       <rect class="svc-clip-rect" data-clip-id="clipEdesign" x="0" y="0" width="0" height="309.03"/>
@@ -574,16 +574,17 @@
     });
 
     // SVG DRAW ANIMATIONS, all trigger on scroll into view
-    const clipRects = document.querySelectorAll(".svc-clip-rect");
+    const serviceHeadings = document.querySelectorAll(".service-heading-svg");
     const drawObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          setTimeout(() => entry.target.classList.add("drawn"), 200);
+          const rect = entry.target.querySelector(".svc-clip-rect");
+          if (rect) setTimeout(() => rect.classList.add("drawn"), 200);
           drawObserver.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.05 });
-    clipRects.forEach(r => drawObserver.observe(r));
+    }, { threshold: 0.05, rootMargin: "0px 0px -20px 0px" });
+    serviceHeadings.forEach(svg => drawObserver.observe(svg));
 
     // SCROLL ANIMATIONS
     const revealEls = document.querySelectorAll(".reveal");
