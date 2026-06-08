@@ -433,7 +433,9 @@
       .about-content { order: 1; }
       .about-image-wrap { aspect-ratio: 3/4; }
       .portfolio-cta { height: 66.67vw; max-height: 60vh; }
-      .portfolio-cta-content { padding: 0 24px 28px; flex-direction: column; align-items: flex-start; gap: 8px; }
+      .portfolio-cta-content { padding: 0 24px 28px; }
+      .portfolio-cta-content .footer-top { display: flex; flex-direction: column; gap: 4px; align-items: flex-start; justify-content: flex-start; margin: 0; width: 100%; }
+      .portfolio-cta-content .footer-top > * { width: auto; text-align: left; align-self: flex-start; }
       .portfolio-cta-text { font-size: 12px; }
       .portfolio-cta-label { display: none; }
       footer { padding: 40px 24px 28px; max-height: none; }
@@ -515,7 +517,7 @@
       <div class="portfolio-cta-bg"></div>
       <div class="portfolio-cta-overlay"></div>
       <div class="portfolio-cta-content">
-        <div class="footer-top" style="width:100%;margin-bottom:0;">
+        <div class="footer-top" style="width:100%;margin-bottom:0;align-items:flex-end;">
           <div class="portfolio-cta-left">
             <p class="portfolio-cta-label">View our Portfolio</p>
             <p class="portfolio-cta-text">Spaces designed to be lived in, not just looked at.</p>
