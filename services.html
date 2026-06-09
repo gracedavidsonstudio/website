@@ -381,9 +381,9 @@
     from { transform: rotate(0deg) translate(0, 40px); opacity: 0; }
     to   { transform: rotate(0deg) translate(0, 0); opacity: 1; }
   }
-  .fan-left  { animation: cardFanLeft  0.7s cubic-bezier(0.23,1,0.32,1) forwards; }
-  .fan-right { animation: cardFanRight 0.7s cubic-bezier(0.23,1,0.32,1) forwards; }
-  .fan-front { animation: cardFanFront 0.7s cubic-bezier(0.23,1,0.32,1) forwards; }
+  .fan-left  { animation: cardFanLeft  1.1s cubic-bezier(0.23,1,0.32,1) forwards; }
+  .fan-right { animation: cardFanRight 1.1s cubic-bezier(0.23,1,0.32,1) forwards; }
+  .fan-front { animation: cardFanFront 1.1s cubic-bezier(0.23,1,0.32,1) forwards; }
   </style>
 </head>
 <body>
@@ -441,7 +441,7 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: rgba(255,250,243,0.45);
+    background: rgba(255,250,243,0.3);
   }
   /* invisible spacer — same size as tallest card, keeps wrap height correct */
   .cards-spacer {
@@ -512,9 +512,9 @@
     from { transform: rotate(0deg) translate(0, 40px); opacity: 0; }
     to   { transform: rotate(0deg) translate(0, 0); opacity: 1; }
   }
-  .fan-left  { animation: cardFanLeft  0.7s cubic-bezier(0.23,1,0.32,1) forwards; }
-  .fan-right { animation: cardFanRight 0.7s cubic-bezier(0.23,1,0.32,1) forwards; }
-  .fan-front { animation: cardFanFront 0.7s cubic-bezier(0.23,1,0.32,1) forwards; }
+  .fan-left  { animation: cardFanLeft  1.1s cubic-bezier(0.23,1,0.32,1) forwards; }
+  .fan-right { animation: cardFanRight 1.1s cubic-bezier(0.23,1,0.32,1) forwards; }
+  .fan-front { animation: cardFanFront 1.1s cubic-bezier(0.23,1,0.32,1) forwards; }
   </style>
 
 <div class="cards-wrap" id="cardsWrap">
@@ -728,22 +728,22 @@ function bringToFront(clicked) {
     setTimeout(() => {
       hourly.classList.remove('pre-animate');
       hourly.classList.add('fan-left');
-    }, 200);
+    }, 300);
     setTimeout(() => {
       edesign.classList.remove('pre-animate');
       edesign.classList.add('fan-right');
-    }, 400);
+    }, 650);
     setTimeout(() => {
       full.classList.remove('pre-animate');
       full.classList.add('fan-front');
-    }, 600);
+    }, 1000);
 
     // Clean up animation classes once done
     setTimeout(() => {
       [hourly, edesign, full].forEach(c => {
         c.classList.remove('fan-left', 'fan-right', 'fan-front');
       });
-    }, 1400);
+    }, 2200);
   }
 
   window.addEventListener('load', () => {
