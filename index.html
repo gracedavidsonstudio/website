@@ -254,7 +254,7 @@
 
     /* PLACEHOLDER IMAGES , replace with /images/home/portfolio-panel.jpg and /images/home/services-panel.jpg */
     .panel:nth-child(1) .panel-img { background: url('/images/portfolio/bp-living-11.jpg') center/cover no-repeat; }
-    .panel:nth-child(2) .panel-img { background: url('https://picsum.photos/seed/servpanel/800/1067') center/cover no-repeat; }
+    .panel:nth-child(2) .panel-img { background: url('/images/portfolio/bp-bathroom-18.jpg') center/cover no-repeat; }
 
     .panel:hover .panel-img { transform: scale(1.04); }
 
@@ -421,6 +421,18 @@
       .footer-contact { align-items: flex-start; }
       .footer-bottom { flex-direction: column; align-items: flex-start; gap: 20px; }
     }
+
+    /* PAGE ENTRANCE ANIMATIONS */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero { animation: fadeIn 1.2s ease 0.1s both; }
+    .panels { animation: fadeUp 0.9s cubic-bezier(0.23,1,0.32,1) 0.5s both; }
   </style>
 </head>
 <body>
