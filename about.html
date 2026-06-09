@@ -44,7 +44,7 @@
        HEADER
     ===================== */
     header {
-      background-color: var(--burgundy);
+      background-color: var(--burgundy); background-image: url("/header-bg.png"); background-size: cover; background-position: center;
       display: flex;
       flex-direction: row;
       align-items: center;
@@ -422,7 +422,7 @@
        RESPONSIVE
     ===================== */
     @media (max-width: 768px) {
-      header { padding: 16px 24px; height: auto; }
+      header { padding: 16px 24px; height: auto; background-size: 150%; }
       .header-logo img { width: 100px; }
       nav { display: none; }
       .hamburger { display: flex; }
