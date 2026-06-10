@@ -300,6 +300,19 @@
     }
 
     .panel:hover .panel-label a { border-color: rgba(255,255,255,0.9); }
+    .panel-cta {
+      display: inline-block;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--white);
+      border-bottom: 1px solid transparent;
+      padding-bottom: 3px;
+      transition: border-color var(--transition);
+    }
+    .panel:hover .panel-cta { border-color: rgba(255,255,255,0.9); }
+    a.panel { text-decoration: none; display: block; cursor: pointer; }
 
     /* =====================
        FOOTER
@@ -488,24 +501,24 @@
 
     <!-- TWO PANELS -->
     <section class="panels" aria-label="Explore portfolio and services">
-      <!-- PANEL 1: PORTFOLIO — replace with /images/home/portfolio-panel.jpg -->
-      <article class="panel fade-in reveal">
+      <!-- PANEL 1: PORTFOLIO -->
+      <a href="portfolio.html" class="panel fade-in reveal" aria-label="View our portfolio">
         <div class="panel-img" role="img" aria-label="View our interior design portfolio"></div>
         <div class="panel-overlay"></div>
         <div class="panel-label">
           <span>Portfolio</span>
-          <a href="portfolio.html">View Our Work</a>
+          <span class="panel-cta">View Our Work</span>
         </div>
-      </article>
-      <!-- PANEL 2: SERVICES — replace with /images/home/services-panel.jpg -->
-      <article class="panel fade-in reveal reveal-delay-2">
+      </a>
+      <!-- PANEL 2: SERVICES -->
+      <a href="services.html" class="panel fade-in reveal reveal-delay-2" aria-label="Explore our services">
         <div class="panel-img" role="img" aria-label="Explore our interior design services"></div>
         <div class="panel-overlay"></div>
         <div class="panel-label">
           <span>Services</span>
-          <a href="services.html">Explore Services</a>
+          <span class="panel-cta">Explore Services</span>
         </div>
-      </article>
+      </a>
     </section>
 
   </main>
