@@ -270,6 +270,10 @@
     }
 
     .panel-label {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
       position: absolute;
       bottom: 36px;
       left: 0; right: 0;
@@ -427,8 +431,8 @@
       .hamburger { display: flex; }
       .mobile-menu { display: flex; }
       .hero { height: 55vh; }
-      .panels { grid-template-columns: 1fr; padding: 40px 24px 60px; gap: 16px; }
-      .panel { aspect-ratio: 4/5; }
+      .panels { grid-template-columns: 1fr 1fr; padding: 40px 16px 60px; gap: 12px; }
+      .panel { aspect-ratio: 3/4; }
       footer { padding: 40px 24px 28px; }
       .footer-top { flex-direction: column; gap: 32px; }
       .footer-contact { align-items: flex-start; }
