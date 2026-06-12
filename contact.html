@@ -390,6 +390,29 @@
       drawObserver.observe(document.querySelector(".contact-heading-svg"));
     }
 
+    // PREFILL SERVICE FROM URL PARAM
+    (function() {
+      const params = new URLSearchParams(window.location.search);
+      const service = params.get('service');
+      if (!service) return;
+      const map = {
+        'full': 'Full Service',
+        'edesign': 'E-Design',
+        'hourly': 'Hourly Consultation'
+      };
+      const value = map[service];
+      if (!value) return;
+      const select = document.getElementById('service');
+      if (select) {
+        for (let i = 0; i < select.options.length; i++) {
+          if (select.options[i].value === value) {
+            select.selectedIndex = i;
+            break;
+          }
+        }
+      }
+    })();
+
     // FORM VALIDATION
     const form = document.getElementById("contactForm");
     if (form) {
