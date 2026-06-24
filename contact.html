@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact | Grace Davidson Studio | London Interior Designer</title>
-  <meta name="description" content="Get in touch with Grace Davidson Studio. We would love to hear about your project." />
-  <link rel="canonical" href="https://www.gracedavidsonstudio.com/contact" />
-  <meta property="og:title" content="Contact | Grace Davidson Studio" />
+  <title>Portfolio | Grace Davidson Studio | London Interior Designer</title>
+  <meta name="description" content="Explore the portfolio of Grace Davidson Studio — London based residential interior design projects layered with character, antiques and considered detail." />
+  <link rel="canonical" href="https://www.gracedavidsonstudio.com/portfolio" />
+  <meta property="og:title" content="Portfolio | Grace Davidson Studio" />
   <meta property="og:type" content="website" />
   <link rel="icon" type="image/png" href="/favicon.png">
   <link rel="apple-touch-icon" href="/favicon.png">
@@ -27,7 +27,6 @@
     html { scroll-behavior: smooth; overflow-x: hidden; }
     body { font-family: var(--font); background-color: var(--cream); color: var(--text); font-size: 15px; line-height: 1.7; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
     a { text-decoration: none; color: inherit; }
-    img { display: block; max-width: 100%; }
 
     /* HEADER */
     header { background-color: var(--burgundy); background-image: url("/header-bg.png"); background-size: cover; background-position: center; background-image: url("/header-bg.png"); background-size: cover; background-position: center; display: flex; flex-direction: row; align-items: center; justify-content: space-between; padding: 0 60px; height: 90px; }
@@ -56,159 +55,139 @@
     .menu-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 999; }
     .menu-overlay.open { display: block; }
 
-    /* CONTACT SECTION */
-    .contact-section {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 100px 60px 100px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: start;
-    }
+    /* GALLERY */
+    .gallery { padding: 60px 40px 80px; max-width: 1400px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
 
-    /* PLACEHOLDER IMAGE , replace with /images/contact/contact-image.jpg */
-    .contact-image {
-      width: 100%;
-      aspect-ratio: 3/4;
+    .gallery-row { display: grid; gap: 12px; }
+    .portrait-row { grid-template-columns: repeat(3, 1fr); }
+    .landscape-row { grid-template-columns: repeat(2, 1fr); }
+    .final-row { grid-template-columns: 1fr; }
+
+    .gallery-item {
       overflow: hidden;
-      background: url("/images/portfolio/bp-kitchen-08.jpg") center/cover no-repeat;
+      cursor: pointer;
+      position: relative;
     }
 
-    .contact-content { padding-top: 0; overflow: hidden; }
+    .portrait-row .gallery-item { aspect-ratio: 3/4; }
+    .landscape-row .gallery-item { aspect-ratio: 3/2; }
+    .final-row .gallery-item { aspect-ratio: 16/7; }
 
-    /* HEADING SVG ANIMATION */
-    .contact-clip-rect {
-      transition: width 1.8s cubic-bezier(0.25, 0, 0.75, 1);
-    }
-
-    .contact-clip-rect.drawn { width: 370.26px; }
-
-    .contact-heading-svg {
+    .gallery-img {
       width: 100%;
-      max-width: 360px;
-      height: auto;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      transition: transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+
+    .gallery-item:hover .gallery-img { transform: scale(1.03); }
+
+    /* LIGHTBOX */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(255, 250, 243, 0.96);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    .lightbox.open { display: flex; }
+
+    .lightbox-inner {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 90vw;
+      max-height: 90vh;
+    }
+
+    .lightbox-img {
+      max-width: 90vw;
+      max-height: 78vh;
+      object-fit: contain;
       display: block;
-      margin-bottom: 20px;
     }
 
-    .contact-intro {
-      font-size: 12px;
+    .lightbox-credits {
+      margin-top: 16px;
+      text-align: center;
+    }
+
+    .lightbox-credits p {
+      font-size: 11px;
       font-weight: 300;
-      line-height: 1.95;
-      color: var(--text);
-      margin-bottom: 16px;
-    }
-
-    /* FORM */
-    .contact-form {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    .form-field {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    .form-field label {
-      font-size: 10px;
-      font-weight: 500;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
+      letter-spacing: 0.1em;
       color: var(--text-light);
     }
 
-    .form-field input,
-    .form-field textarea,
-    .form-field select {
-      font-family: var(--font);
-      font-size: 12px;
+    .lightbox-credits span { color: var(--text); }
+
+    .lightbox-close {
+      position: fixed;
+      top: 24px;
+      right: 32px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--burgundy);
+      font-size: 18px;
       font-weight: 300;
-      color: var(--text);
-      background-color: transparent;
-      border: 1px solid rgba(0,0,0,0.2);
-      border-radius: 0;
-      padding: 10px 12px;
-      outline: none;
-      transition: border-color var(--transition);
-      width: 100%;
-      appearance: none;
-      -webkit-appearance: none;
+      line-height: 1;
+      transition: opacity var(--transition);
+      z-index: 2001;
+      opacity: 0.7;
     }
 
-    .form-field input:focus,
-    .form-field textarea:focus,
-    .form-field select:focus {
-      border-color: var(--burgundy);
-    }
+    .lightbox-close:hover { opacity: 1; }
 
-    .form-field input::placeholder,
-    .form-field textarea::placeholder {
-      color: rgba(0,0,0,0.25);
-    }
-
-    .form-field textarea {
-      resize: none;
-      min-height: 80px;
-    }
-
-    .form-field select {
-      color: var(--text);
+    .lightbox-prev,
+    .lightbox-next {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
       cursor: pointer;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%235a5a5a'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 4px center;
-      padding-right: 20px;
+      color: var(--burgundy);
+      padding: 16px;
+      transition: opacity var(--transition);
+      z-index: 2001;
+      opacity: 0.6;
+      display: flex;
+      align-items: center;
     }
 
-    .form-field select option { color: var(--text); }
+    .lightbox-prev { left: 20px; }
+    .lightbox-next { right: 20px; }
+    .lightbox-prev:hover, .lightbox-next:hover { opacity: 1; }
 
-    .form-submit {
-      margin-top: 8px;
-      display: inline-block;
+    .lightbox-counter {
+      position: fixed;
+      top: 28px;
+      left: 50%;
+      transform: translateX(-50%);
       font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--white);
-      background-color: var(--burgundy);
-      padding: 12px 28px;
-      border: 1px solid var(--burgundy);
-      border-radius: 4px;
-      cursor: pointer;
-      transition: background-color var(--transition), color var(--transition);
-      align-self: flex-start;
-    }
-
-    .form-field input:invalid:not(:placeholder-shown),
-    .form-field textarea:invalid:not(:placeholder-shown),
-    .form-field select:invalid {
-      border-color: rgba(67,18,31,0.4);
-    }
-
-    .field-error {
-      font-size: 10px;
-      font-weight: 400;
-      color: var(--burgundy);
-      letter-spacing: 0.05em;
-      margin-top: 4px;
-      display: none;
-    }
-
-    .field-error.visible { display: block; }
-
-    .form-submit:hover {
-      background-color: transparent;
-      color: var(--burgundy);
+      font-weight: 300;
+      letter-spacing: 0.15em;
+      color: var(--text-light);
     }
 
     /* SCROLL ANIMATIONS */
-    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.8s cubic-bezier(0.25, 0.1, 0.25, 1), transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1); }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal { opacity: 1; transform: none; }
+
+    /* Gallery row animation - subtle fade only, no opacity:0 so scroll is never blocked */
+    .gallery-row {
+      opacity: 0.01;
+      transition: opacity 0.6s ease;
+    }
+    .gallery-row.visible {
+      opacity: 1;
+    }
 
     /* FOOTER */
     footer {
@@ -232,10 +211,15 @@
       nav { display: none; }
       .hamburger { display: flex; }
       .mobile-menu { display: flex; }
-      .contact-section { grid-template-columns: 1fr; gap: 40px; padding: 60px 24px; width: 100%; max-width: 100%; box-sizing: border-box; }
-      .contact-form, .form-field, .form-field input, .form-field textarea, .form-field select { max-width: 100%; box-sizing: border-box; }
-      main { overflow-x: hidden; }
-      .contact-image { display: none; }
+      .gallery { padding: 32px 12px 60px; gap: 8px; }
+      .portrait-row { grid-template-columns: repeat(2, 1fr); }
+      .landscape-row { grid-template-columns: 1fr; }
+      .landscape-row .gallery-item { aspect-ratio: 4/3; width: 100%; }
+      .final-row { grid-template-columns: 1fr; }
+      .final-row .gallery-item { aspect-ratio: 4/3; width: 80%; margin: 0 auto; }
+      .gallery-row { gap: 8px; }
+      .gallery-item.lone { grid-column: 1 / -1; width: 50%; margin: 0 auto; }
+      .lightbox-credits p { display: flex; flex-direction: column; gap: 4px; }
       footer { padding: 40px 24px 28px; }
       .footer-top { flex-direction: column; gap: 32px; }
       .footer-contact { align-items: flex-start; }
@@ -251,10 +235,10 @@
     </a>
     <nav aria-label="Main navigation">
       <ul>
-        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="portfolio.html" class="active">Portfolio</a></li>
         <li><a href="services.html">Services</a></li>
         <li><a href="about.html">About</a></li>
-        <li><a href="contact.html" class="active">Contact</a></li>
+        <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
     <button class="hamburger" aria-label="Open menu" aria-expanded="false">
@@ -265,80 +249,124 @@
   <div class="menu-overlay" id="menuOverlay"></div>
   <div class="mobile-menu" id="mobileMenu">
     <ul>
-      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="portfolio.html" class="active">Portfolio</a></li>
       <li><a href="services.html">Services</a></li>
       <li><a href="about.html">About</a></li>
-      <li><a href="contact.html" class="active">Contact</a></li>
+      <li><a href="contact.html">Contact</a></li>
     </ul>
   </div>
 
   <main>
-    <section class="contact-section">
-
-      <!-- PLACEHOLDER IMAGE — replace with /images/contact/contact-image.jpg -->
-      <div class="contact-image reveal" role="img" aria-label="Grace Davidson Studio interior design"></div>
-
-      <div class="contact-content reveal reveal-delay-2">
-
-        <svg class="contact-heading-svg" viewBox="0 0 370.26 65.29" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <defs>
-              <clipPath id="clipContact">
-                <rect class="contact-clip-rect" x="0" y="0" width="0" height="65.29"/>
-              </clipPath>
-            </defs>
-            <path fill="#43121F" clip-path="url(#clipContact)" d="M184.66,26.51c2.2-2.65,4.97-3.01,5.99-1.47.28.42.23,1.78.06,1.83-.76-.51-1.88-1.33-2.55-1.49-3.75,1.9-6.53,7.81-4.3,12.03,3.32,6.29,16.96-.2,23.77-10.2,1.76-2.58,3.04-5.58,4.58-8.3-8.23,1.35-18.6.62-17.24-5.53.06-.26.62-1.09.7-.93.12.23.51.98.5,1.33-.06,5.55,10.15,4.83,16.86,3.52l6.36-9.21,1.56-.37c.35-.08.46,1.5.26,1.86l-3.97,7.07c6.83-.87,16.88-3.89,20.43-.72.72.64,1.05,2.86-.12,3.17l-.89-2.26c-.91-2.31-14.8-.03-20.78,1.51l-6.87,9.76c-3.05,4.34-6.86,15.86-6.14,22.17.42,3.66,3.78,5.49,7.22,4.77s6.38-2.59,9.3-4.68c8.83-6.32,14.44-15.03,21.63-23.38-5.19,11.3-27.05,35.5-36.95,27.99-5.47-4.14-1.28-15.26,1.38-22.77-5.98,6.15-17.27,12.24-22.02,6.87-1.59-1.8-1.72-4.51-1.53-7.34-6.23,5.71-12.56,11.3-20.94,11.48-4.96.11-5.78-6.08-5.68-11.83-1.74,3.71-2.89,8.48-6.19,9.08-.67.12-2.24-.51-2.56-1.15-.82-1.65-.81-3.51-.76-5.6-6.58,8.31-17.16,20.95-27.25,22.63-4.09.68-7.75-1.7-8.32-5.79-.34-2.46.02-5.06.25-7.72-4.14,7.5-14.32,24.41-21.4,22.27-7.8-2.35-3.29-22.16-1.48-31.56.44-2.28.71-4.32.48-6.86-3.94,3.06-6.17,6.63-8.72,10.62l-4.75,7.44c-.28.44-1.44.94-1.87,1.01-2.6.4-.19-9.11,1.33-14.48-5.85,5.34-13.41,6.38-20.57,3.73.9,4.03-1.13,7.65-4.97,7.77s-6.05-3.65-5.56-8.48c-8.2,9.2-22.7,19.79-34.66,17.36C-5.47,48.88-.46,25.25,11.4,12.88c4.26-4.44,9.52-7.61,15.57-8.35,5.03-.62,9.71,2.66,9.4,7.68-.2,3.3-2.85,5.51-5.6,6.34-2.92.88-6.04-.3-8.34-2.44l-.65-.6c-.19-.18,0-.68.13-.9.46-.73,5.66,5.58,10.51,1.82,1.86-1.44,2.99-3.27,2.65-5.62-.65-4.47-6.29-6.07-11.56-4.28-5.95,2.02-10.73,5.98-14.35,11.04C3.49,25.47-1.61,38.58,2.91,46.58c3.42,6.05,13.18,4.73,20.24,1.3,9.59-4.66,17.76-11.91,23.36-20.84.31.08,1.11.48,1,.71l-.55,1.11c-1.46,2.94-3.22,5.91-2.55,9.17.46,2.23,2.42,3.59,4.37,3.47,2.08-.13,3.51-1.86,3.72-4.14.18-2.01-.76-3.44-2.69-4.21-1.68-.67-3.39-3.4-1.58-4.51,2.11-.16,3.87,2.53,4.59,4.59,8.09,3.97,17.59,1.71,22.72-5.73.28-.17,1.01-.58,1.04-.35l.15.97c-1.94,5.48-4.02,10.5-3.77,16.68l7.5-11.48c2.26-3.45,6.44-8.61,8.2-7.4,1.35.93.92,4.36.31,7.46-1.73,8.85-5.98,28.01.31,30.46,3.47,1.35,8.53-4.19,11.57-8.19,6.05-7.98,10.52-16.67,14.46-25.87,1.63-3.81,3.64-7.27,5.54-10.87-8.21,1.35-18.59.71-17.22-5.59.04-.18.61-1,.69-.85.12.23.5.98.5,1.32-.05,5.56,10.15,4.83,16.86,3.53,2.09-3.24,4.02-6.19,6.36-9.21l1.56-.37c.35-.08.46,1.5.27,1.84l-3.98,7.08c6.79-.88,17.04-3.9,20.44-.71.78.73,1.01,2.81-.13,3.18l-.89-2.28c-.9-2.31-14.8-.03-20.79,1.51l-6.63,9.46c-2.05,2.93-3.13,6.65-4.43,10.01-2.09,5.42-3.51,13.5.09,16.21s9.85-.12,14.22-3.45c8.35-6.38,14.99-14.28,20.75-23.05,1.46-2.22,4.01-3.51,5.8-2.14.51.39.71,1.87.42,2.36l-1.76-1.58c-.33-.3-1.52.12-1.88.46-4.4,4.18-5.22,11.56-2.72,12.53,2.79,1.08,6.25-9.4,8.17-14.64l.31-.84c.06-.16.65-.19.7-.03.54,1.8-1.5,6.59-.64,13.72.17,1.45,1.35,3.94,2.63,4.25,8.4,2.04,19.25-7.99,25.16-15.11Z"/>
-            <path fill="#43121F" clip-path="url(#clipContact)" d="M349.65,40.25c1.79,3.58,1.91,7.43-.95,10.11-1.17,1.1-2.92,1.6-4.22,1.02-1.48-.65-2.39-2.53-2.08-4.29.56-3.17,3.12-5.53,5.63-7.24l-3.02-7.6c-5.1,9.63-11.13,19.23-22.27,21.6-4.01.85-7.3-1.51-8.09-5.55-1.44-7.33.3-14.37,1.58-22.03-5.92,10.57-15.99,34.9-27.93,29.93-5.98-2.49-6.5-11.83-4.57-18.83l4.4-15.96c.96-3.49,1.22-7.2.95-10.75-.42-5.57-5.3-10.45-10.97-9.17-6.79,1.54-9.77,9.42-6.75,15.43,1.34,2.68,6.28,6.36,5.76,6.8-.28.64-5.71-3.87-7.14-6.96-2.96-6.37.49-14.58,7.47-16.44,5.76-1.54,11.52,2.74,12.53,8.5.76,4.31.44,8.89-.71,13.13l-4.28,15.68c-1.79,6.58-1.43,15.39,3.85,17.45s10.34-2.61,13.93-7.75c6.26-8.96,10.74-18.54,15.31-28.54.45-.99,1.95-.45,1.66.6-2.68,9.93-6.05,21.08-3.78,29.23.82,2.95,3.56,4.66,6.59,3.99,6.4-1.43,11.34-5.47,15.26-10.65l8.62-14.84c-.04-.07,1.17.07,1.09.31l-.47,1.39c-1.2,3.54.21,7.03,2.13,10.29l14.35-7.31,6.74-4.66c-.5,2.22-2.28,3.37-3.99,4.44-5.27,3.28-10.63,5.95-16.62,8.68ZM347.51,49.78c2.62-2.44,2.8-5.82.92-8.76-4.16,2.88-6.3,7.63-3.76,9.12.62.36,2.31.15,2.84-.35Z"/>
-          </svg>
-
-        <p class="contact-intro">We would love to hear about your project. Get in touch using the form below and we will get back to you within 24 hours.</p>
-
-        <!-- Replace YOUR_FORMSPREE_ID with your Formspree endpoint ID -->
-        <form class="contact-form" id="contactForm" action="https://formspree.io/f/mqeveqep" method="POST" novalidate>
-
-          <div class="form-field">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" placeholder="Your name" required>
-            <span class="field-error" id="nameError">Please enter your name.</span>
-          </div>
-
-          <div class="form-field">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="your@email.com" required>
-            <span class="field-error" id="emailError">Please enter a valid email address.</span>
-          </div>
-
-          <div class="form-field">
-            <label for="phone">Phone</label>
-            <input type="tel" id="phone" name="phone" placeholder="Your phone number" required pattern="[+]?[0-9\s\-\(\)]{7,20}">
-            <span class="field-error" id="phoneError">Please enter a valid phone number.</span>
-          </div>
-
-          <div class="form-field">
-            <label for="service">What service are you interested in?</label>
-            <select id="service" name="service" required>
-
-              <option value="" disabled selected>Select a service</option>
-              <option value="Full Service">Full Service</option>
-              <option value="E-Design">E-Design</option>
-              <option value="Hourly Consultation">Hourly Consultation</option>
-              <option value="Not sure yet">Not sure yet</option>
-            </select>
-            <span class="field-error" id="serviceError">Please select a service.</span>
-          </div>
-
-          <div class="form-field">
-            <label for="message">Tell us about your project</label>
-            <textarea id="message" name="message" placeholder="Share as much as you like..." rows="4" required></textarea>
-            <span class="field-error" id="messageError">Please tell us about your project.</span>
-          </div>
-
-          <button type="submit" class="form-submit">Send Enquiry</button>
-
-        </form>
+    <div class="gallery">
+      <div class="gallery-row portrait-row js-reveal">
+        <div class="gallery-item" data-index="0" role="button" tabindex="0" aria-label="View image 1">
+          <div class="gallery-img" style="background-image:url('/images/portfolio/bp-kitchen-01.jpg')"></div>
+        </div>
+        <div class="gallery-item" data-index="1" role="button" tabindex="0" aria-label="View image 2">
+          <div class="gallery-img" style="background-image:url('/images/portfolio/bp-kitchen-02.jpg')"></div>
+        </div>
+        <div class="gallery-item" data-index="2" role="button" tabindex="0" aria-label="View image 3">
+          <div class="gallery-img" style="background-image:url('/images/portfolio/bp-kitchen-03.jpg')"></div>
+        </div>
       </div>
+      <div class="gallery-row landscape-row js-reveal">
+        <div class="gallery-item" data-index="3" role="button" tabindex="0" aria-label="View image 4">
+          <div class="gallery-img" style="background-image:url('/images/portfolio/bp-kitchen-04.jpg')"></div>
+        </div>
+        <div class="gallery-item" data-index="4" role="button" tabindex="0" aria-label="View image 5">
+          <div class="gallery-img" style="background-image:url('/images/portfolio/bp-kitchen-05.jpg')"></div>
+        </div>
+      </div>
+      <div class="gallery-row portrait-row js-reveal">
+        <div class="gallery-item" data-index="5" role="button" tabindex="0" aria-label="View image 6">
+          <div class="gallery-img" style="background-image:url('/images/portfolio/bp-kitchen-06.jpg')"></div>
+        </div>
+        <div class="gallery-item" data-index="6" role="button" tabindex="0" aria-label="View image 7">
+          <div class="gallery-img" style="background-image:url('/images/portfolio/bp-kitchen-07.jpg')"></div>
+        </div>
+        <div class="gallery-item" data-index="7" role="button" tabindex="0" aria-label="View image 8">
+          <div class="gallery-img" style="background-image:url('/images/portfolio/bp-kitchen-08.jpg')"></div>
+        </div>
+      </div>
+      <div class="gallery-row landscape-row js-reveal">
+        <div class="gallery-item" data-index="8" role="button" tabindex="0" aria-label="View image 9">
+          <div class="gallery-img" style="background-image:url('/images/portfolio/bp-living-09.jpg')"></div>
+        </div>
+        <div class="gallery-item" data-index="9" role="button" tabindex="0" aria-label="View image 10">
+          <div class="gallery-img" style="background-image:url('/images/portfolio/bp-living-10.jpg')"></div>
+        </div>
+      </div>
+      <div class="gallery-row portrait-row js-reveal">
+        <div class="gallery-item" data-index="10" role="button" tabindex="0" aria-label="View image 11">
+          <div class="gallery-img" style="background-image:url('/images/portfolio/bp-living-11.jpg')"></div>
+        </div>
+        <div class="gallery-item" data-index="11" role="button" tabindex="0" aria-label="View image 12">
+          <div class="gallery-img" style="background-image:url('/images/portfolio/bp-living-12.jpg')"></div>
+        </div>
+        <div class="gallery-item" data-index="12" role="button" tabindex="0" aria-label="View image 13">
+          <div class="gallery-img" style="background-image:url('/images/portfolio/bp-wc-13.jpg')"></div>
+        </div>
+      </div>
+      <div class="gallery-row landscape-row js-reveal">
+        <div class="gallery-item" data-index="13" role="button" tabindex="0" aria-label="View image 14">
+          <div class="gallery-img" style="background-image:url('/images/portfolio/bp-ensuite-14.jpg')"></div>
+        </div>
+        <div class="gallery-item" data-index="14" role="button" tabindex="0" aria-label="View image 15">
+          <div class="gallery-img" style="background-image:url('/images/portfolio/bp-ensuite-15.jpg')"></div>
+        </div>
+      </div>
+      <div class="gallery-row portrait-row js-reveal">
+        <div class="gallery-item" data-index="15" role="button" tabindex="0" aria-label="View image 16">
+          <div class="gallery-img" style="background-image:url('/images/portfolio/bp-bedroom-16.jpg')"></div>
+        </div>
+        <div class="gallery-item" data-index="16" role="button" tabindex="0" aria-label="View image 17">
+          <div class="gallery-img" style="background-image:url('/images/portfolio/bp-bathroom-17.jpg')"></div>
+        </div>
+        <div class="gallery-item" data-index="17" role="button" tabindex="0" aria-label="View image 18">
+          <div class="gallery-img" style="background-image:url('/images/portfolio/bp-bathroom-18.jpg')"></div>
+        </div>
+      </div>
+      <div class="gallery-row landscape-row js-reveal">
+        <div class="gallery-item" data-index="18" role="button" tabindex="0" aria-label="View image 19">
+          <div class="gallery-img" style="background-image:url('/images/portfolio/bp-bathroom-19.jpg')"></div>
+        </div>
+        <div class="gallery-item" data-index="19" role="button" tabindex="0" aria-label="View image 20">
+          <div class="gallery-img" style="background-image:url('/images/portfolio/bp-utility-20.jpg')"></div>
+        </div>
+      </div>
+    
+    
 
-    </section>
+    </div>
   </main>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <line x1="1" y1="1" x2="17" y2="17" stroke="#43121F" stroke-width="1" stroke-linecap="round"/>
+        <line x1="17" y1="1" x2="1" y2="17" stroke="#43121F" stroke-width="1" stroke-linecap="round"/>
+      </svg>
+    </button>
+    <span class="lightbox-counter" id="lightboxCounter"></span>
+    <button class="lightbox-prev" id="lightboxPrev" aria-label="Previous">
+      <svg width="10" height="20" viewBox="0 0 10 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polyline points="9,1 1,10 9,19" stroke="#43121F" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+    <button class="lightbox-next" id="lightboxNext" aria-label="Next">
+      <svg width="10" height="20" viewBox="0 0 10 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polyline points="1,1 9,10 1,19" stroke="#43121F" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+    <div class="lightbox-inner">
+      <img class="lightbox-img" id="lightboxImg" src="" alt="Portfolio image">
+      <div class="lightbox-credits">
+        <p>Contractor: <span id="lightboxContractor"></span></p>
+        <p>Photography: <span id="lightboxPhotographer"></span></p>
+      </div>
+    </div>
+  </div>
 
   <!-- FOOTER -->
 
@@ -360,6 +388,8 @@
   </footer>
 
   <script>
+    const images = [{"src": "/images/portfolio/bp-kitchen-01.jpg", "contractor": "AF Build", "photographer": "Amy Barclay"}, {"src": "/images/portfolio/bp-kitchen-02.jpg", "contractor": "AF Build", "photographer": "Amy Barclay"}, {"src": "/images/portfolio/bp-kitchen-03.jpg", "contractor": "AF Build", "photographer": "Amy Barclay"}, {"src": "/images/portfolio/bp-kitchen-04.jpg", "contractor": "AF Build", "photographer": "Amy Barclay"}, {"src": "/images/portfolio/bp-kitchen-05.jpg", "contractor": "AF Build", "photographer": "Amy Barclay"}, {"src": "/images/portfolio/bp-kitchen-06.jpg", "contractor": "AF Build", "photographer": "Amy Barclay"}, {"src": "/images/portfolio/bp-kitchen-07.jpg", "contractor": "AF Build", "photographer": "Amy Barclay"}, {"src": "/images/portfolio/bp-kitchen-08.jpg", "contractor": "AF Build", "photographer": "Amy Barclay"}, {"src": "/images/portfolio/bp-living-09.jpg", "contractor": "AF Build", "photographer": "Amy Barclay"}, {"src": "/images/portfolio/bp-living-10.jpg", "contractor": "AF Build", "photographer": "Amy Barclay"}, {"src": "/images/portfolio/bp-living-11.jpg", "contractor": "AF Build", "photographer": "Amy Barclay"}, {"src": "/images/portfolio/bp-living-12.jpg", "contractor": "AF Build", "photographer": "Amy Barclay"}, {"src": "/images/portfolio/bp-wc-13.jpg", "contractor": "AF Build", "photographer": "Amy Barclay"}, {"src": "/images/portfolio/bp-ensuite-14.jpg", "contractor": "AF Build", "photographer": "Amy Barclay"}, {"src": "/images/portfolio/bp-ensuite-15.jpg", "contractor": "AF Build", "photographer": "Amy Barclay"}, {"src": "/images/portfolio/bp-bedroom-16.jpg", "contractor": "AF Build", "photographer": "Amy Barclay"}, {"src": "/images/portfolio/bp-bathroom-17.jpg", "contractor": "AF Build", "photographer": "Amy Barclay"}, {"src": "/images/portfolio/bp-bathroom-18.jpg", "contractor": "AF Build", "photographer": "Amy Barclay"}, {"src": "/images/portfolio/bp-bathroom-19.jpg", "contractor": "AF Build", "photographer": "Amy Barclay"}, {"src": "/images/portfolio/bp-utility-20.jpg", "contractor": "AF Build", "photographer": "Amy Barclay"}];
+
     // HAMBURGER
     const hamburger = document.querySelector(".hamburger");
     const mobileMenu = document.getElementById("mobileMenu");
@@ -375,122 +405,94 @@
     menuOverlay.addEventListener("click", toggleMenu);
     mobileMenu.querySelectorAll("a").forEach(a => a.addEventListener("click", toggleMenu));
 
-    // CONTACT SVG DRAW ANIMATION
-    const contactClip = document.querySelector(".contact-clip-rect");
-    if (contactClip) {
-      const drawObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            setTimeout(() => contactClip.classList.add("drawn"), 200);
-            drawObserver.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.3 });
-      drawObserver.observe(document.querySelector(".contact-heading-svg"));
+    // LIGHTBOX
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById("lightboxImg");
+    const lightboxContractor = document.getElementById("lightboxContractor");
+    const lightboxPhotographer = document.getElementById("lightboxPhotographer");
+    const lightboxCounter = document.getElementById("lightboxCounter");
+    let currentIndex = 0;
+
+    function openLightbox(index) {
+      currentIndex = index;
+      updateLightbox();
+      lightbox.classList.add("open");
+      document.body.style.overflow = "hidden";
     }
 
-    // PREFILL SERVICE FROM URL PARAM
-    (function() {
-      const params = new URLSearchParams(window.location.search);
-      const service = params.get('service');
-      if (!service) return;
-      const map = {
-        'full': 'Full Service',
-        'edesign': 'E-Design',
-        'hourly': 'Hourly Consultation'
-      };
-      const value = map[service];
-      if (!value) return;
-      const select = document.getElementById('service');
-      if (select) {
-        for (let i = 0; i < select.options.length; i++) {
-          if (select.options[i].value === value) {
-            select.selectedIndex = i;
-            break;
-          }
+    function closeLightbox() {
+      lightbox.classList.remove("open");
+      document.body.style.overflow = "";
+    }
+
+    function updateLightbox() {
+      const img = images[currentIndex];
+      lightboxImg.src = img.src;
+      lightboxContractor.textContent = img.contractor;
+      lightboxPhotographer.textContent = img.photographer;
+      lightboxCounter.textContent = (currentIndex + 1) + " / " + images.length;
+    }
+
+    function prevImage() { currentIndex = (currentIndex - 1 + images.length) % images.length; updateLightbox(); }
+    function nextImage() { currentIndex = (currentIndex + 1) % images.length; updateLightbox(); }
+
+    document.querySelectorAll(".gallery-item").forEach(item => {
+      item.addEventListener("click", () => openLightbox(parseInt(item.dataset.index)));
+      item.addEventListener("keydown", e => { if (e.key === "Enter") openLightbox(parseInt(item.dataset.index)); });
+    });
+
+    document.getElementById("lightboxClose").addEventListener("click", closeLightbox);
+    document.getElementById("lightboxPrev").addEventListener("click", prevImage);
+    document.getElementById("lightboxNext").addEventListener("click", nextImage);
+    lightbox.addEventListener("click", e => { if (e.target === lightbox) closeLightbox(); });
+
+    document.addEventListener("keydown", e => {
+      if (!lightbox.classList.contains("open")) return;
+      if (e.key === "ArrowLeft") prevImage();
+      if (e.key === "ArrowRight") nextImage();
+      if (e.key === "Escape") closeLightbox();
+    });
+
+    // CENTRE LONE ITEMS ON MOBILE
+    function fixLoneItems() {
+      if (window.innerWidth > 768) return;
+      document.querySelectorAll('.portrait-row').forEach(row => {
+        const items = row.querySelectorAll('.gallery-item');
+        items.forEach(i => i.classList.remove('lone'));
+        if (items.length % 2 !== 0) {
+          items[items.length - 1].classList.add('lone');
         }
-      }
-    })();
-
-    // FORM VALIDATION
-    const form = document.getElementById("contactForm");
-    if (form) {
-      form.addEventListener("submit", function(e) {
-        e.preventDefault();
-        let valid = true;
-
-        const name = document.getElementById("name");
-        const nameError = document.getElementById("nameError");
-        if (!name.value.trim()) {
-          nameError.classList.add("visible");
-          name.style.borderColor = "rgba(67,18,31,0.6)";
-          valid = false;
-        } else {
-          nameError.classList.remove("visible");
-          name.style.borderColor = "";
-        }
-
-        const email = document.getElementById("email");
-        const emailError = document.getElementById("emailError");
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email.value.trim())) {
-          emailError.classList.add("visible");
-          email.style.borderColor = "rgba(67,18,31,0.6)";
-          valid = false;
-        } else {
-          emailError.classList.remove("visible");
-          email.style.borderColor = "";
-        }
-
-        const phone = document.getElementById("phone");
-        const phoneError = document.getElementById("phoneError");
-        const phoneRegex = /^[+]?[0-9\s\-\(\)]{7,20}$/;
-        if (!phoneRegex.test(phone.value.trim())) {
-          phoneError.classList.add("visible");
-          phone.style.borderColor = "rgba(67,18,31,0.6)";
-          valid = false;
-        } else {
-          phoneError.classList.remove("visible");
-          phone.style.borderColor = "";
-        }
-
-        const service = document.getElementById("service");
-        const serviceError = document.getElementById("serviceError");
-        if (!service.value) {
-          serviceError.classList.add("visible");
-          service.style.borderColor = "rgba(67,18,31,0.6)";
-          valid = false;
-        } else {
-          serviceError.classList.remove("visible");
-          service.style.borderColor = "";
-        }
-
-        const message = document.getElementById("message");
-        const messageError = document.getElementById("messageError");
-        if (!message.value.trim()) {
-          messageError.classList.add("visible");
-          message.style.borderColor = "rgba(67,18,31,0.6)";
-          valid = false;
-        } else {
-          messageError.classList.remove("visible");
-          message.style.borderColor = "";
-        }
-
-        if (valid) form.submit();
       });
     }
+    fixLoneItems();
+    window.addEventListener('resize', fixLoneItems);
 
-    // SCROLL ANIMATIONS
-    const revealEls = document.querySelectorAll(".reveal");
-    const revealObserver = new IntersectionObserver((entries) => {
+    // SCROLL ANIMATIONS — rows fade in as they enter viewport
+    const rowEls = document.querySelectorAll(".js-reveal");
+    const rowObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add("visible");
-          revealObserver.unobserve(entry.target);
+          rowObserver.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.1 });
-    revealEls.forEach(el => revealObserver.observe(el));
+    }, { threshold: 0.05, rootMargin: "0px 0px 50px 0px" });
+    rowEls.forEach(el => rowObserver.observe(el));
+
+    // Footer reveal
+    const footerEl = document.querySelector("footer");
+    if (footerEl) {
+      const footerObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = "1";
+          }
+        });
+      }, { threshold: 0.1 });
+      footerEl.style.opacity = "0";
+      footerEl.style.transition = "opacity 0.6s ease";
+      footerObserver.observe(footerEl);
+    }
   </script>
 
 </body>
