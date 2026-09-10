@@ -313,8 +313,6 @@
         <!-- Replace YOUR_FORMSPREE_ID with your Formspree endpoint ID -->
         <form class="contact-form" id="contactForm" action="https://formspree.io/f/mqeveqep" method="POST" novalidate>
 
-          <input type="hidden" name="_next" value="https://gracedavidsonstudio.com/thank-you">
-
           <div class="form-field">
             <label for="name">Name</label>
             <input type="text" id="name" name="name" placeholder="Your name" required>
@@ -500,7 +498,30 @@
           message.style.borderColor = "";
         }
 
-        if (valid) form.submit();
+        if (!valid) return;
+
+        const submitBtn = form.querySelector(".form-submit");
+        const originalBtnText = submitBtn.textContent;
+        submitBtn.textContent = "Sending...";
+        submitBtn.disabled = true;
+
+        fetch(form.action, {
+          method: "POST",
+          body: new FormData(form),
+          headers: { "Accept": "application/json" }
+        }).then(function(response) {
+          if (response.ok) {
+            window.location.href = "thank-you.html";
+          } else {
+            submitBtn.textContent = originalBtnText;
+            submitBtn.disabled = false;
+            alert("Something went wrong sending your message. Please try again, or email grace@gracedavidsonstudio.com directly.");
+          }
+        }).catch(function() {
+          submitBtn.textContent = originalBtnText;
+          submitBtn.disabled = false;
+          alert("Something went wrong sending your message. Please try again, or email grace@gracedavidsonstudio.com directly.");
+        });
       });
     }
 
